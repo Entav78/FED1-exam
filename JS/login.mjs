@@ -28,7 +28,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       if (accessToken) {
           localStorage.setItem("accessToken", accessToken);
           console.log("Redirecting to test page...");
-          window.location.href = "/account/test.html";
+          window.location.href = "/index";
       } else {
           console.log("No accessToken found.");
           document.getElementById("login-error-message").innerText = "Login failed. Please check your email and password.";
