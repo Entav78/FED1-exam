@@ -1,7 +1,8 @@
+import './header.mjs';
+//import './adminLoginLink.mjs';//
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
   event.preventDefault(); // Prevent default form submission
 
-  // Get the input values
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
@@ -20,17 +21,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       }
 
       const data = await response.json();
-      console.log("Full response data:", JSON.stringify(data, null, 2)); // Inspect the full response structure
 
       // Assuming accessToken is within a nested object, adjust accordingly
-      const accessToken = data.data ? data.data.accessToken : data.accessToken;
+      const accessToken = data.data ? data.data.accessToken : data.accessToken; //ChatGPT helped me figure out this since the token is within a nested object//
 
       if (accessToken) {
           localStorage.setItem("accessToken", accessToken);
-          console.log("Redirecting to test page...");
-          window.location.href = "/index";
+          window.location.href = "/post/edit.html";
       } else {
-          console.log("No accessToken found.");
           document.getElementById("login-error-message").innerText = "Login failed. Please check your email and password.";
       }
   } catch (error) {

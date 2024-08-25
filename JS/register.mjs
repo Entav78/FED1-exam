@@ -1,4 +1,5 @@
-document.getElementById("registerForm").addEventListener("submit", function(event) {
+import './header.mjs';
+document.getElementById("registerForm").addEventListener("submit", async function(event) {
   event.preventDefault(); // Prevent default form submission
 
   // Get the input values
@@ -20,31 +21,28 @@ document.getElementById("registerForm").addEventListener("submit", function(even
       password: password
   };
 
-  // Call the API to register the user
-  fetch("https://v2.api.noroff.dev/auth/register", {
-      method: 'POST',
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-    if (data.success) {
-        // Handle successful registration (e.g., redirect to login page)
-        window.location.href = "/account/login.html";
-    } else if (data.errors && data.errors.length > 0) {
-        // Display the first error message from the errors array
-        document.getElementById("register-error-message").innerText = data.errors[0].message;
-    } else {
-        // Fallback error message if no specific error message is found
-        document.getElementById("register-error-message").innerText = "An unknown error occurred. Please try again.";
-    }
-  })
-  .catch(error => {
+  try {
+      // Used code from freecodecamp.org and rapidapi.com//
+      const response = await fetch("https://v2.api.noroff.dev/auth/register", {
+          method: 'POST',
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(userData)
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data.success) {
+          window.location.href = "/login.html";
+      } else if (data.errors && data.errors.length > 0) {
+          document.getElementById("register-error-message").innerText = data.errors[0].message;
+      } else {
+          document.getElementById("register-error-message").innerText = "An unknown error occurred. Please try again.";
+      }
+  } catch (error) {
       console.error("Error:", error);
       document.getElementById("register-error-message").innerText = "An error occurred. Please try again.";
-  });
+  }
 });
-
