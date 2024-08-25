@@ -12,12 +12,19 @@ document.addEventListener("DOMContentLoaded", function() {
            // Show all "Edit Posts" links only for admins
           editPostLinks.forEach(link => link.style.display = "inline-block");
           
-          // Add a click event to log out the admin
           link.addEventListener("click", function(event) {
-              event.preventDefault(); // Prevent the default link behavior
-              localStorage.removeItem("accessToken"); // Remove the access token to log out
-              window.location.reload(); // Reload the page to reflect the logged-out state
-          });
+            event.preventDefault(); // Prevent the default link behavior
+            localStorage.removeItem("accessToken"); // Remove the access token to log out
+            
+            // Check if the current page is the edit page
+            if (window.location.pathname === "/post/edit.html") {
+                // Redirect to the blog feed page after logging out
+                window.location.href = "/index.html";
+            } else {
+                // Reload the page to reflect the logged-out state
+                window.location.reload(); 
+            }
+        });
       });
   } else {
     // Redirect to /post/edit.html after successful login only if on login page
