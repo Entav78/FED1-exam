@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Account Login</title>
-  <link rel="stylesheet" href="/CSS/header.css">
-  <script type="module" src="/JS/login.mjs" defer></script>
+  <link rel="stylesheet" href="/CSS/register.css">
+  <script type="module" src="/JS/Account/adminLoginLink.mjs" defer></script>
 </head>
 <body>
   <nav> 
@@ -36,19 +36,24 @@
       </li>
     </ul>
 </nav>
-  <h1>Login to Your Account</h1>
+  
   <form id="loginForm">
+    <h1>Login to Your Account</h1>
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" autocomplete="email" required>
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" autocomplete="current-password" required>
-
+    <div class="password-wrapper">
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+    <span id="togglePassword" class="toggle-password hide-password"></span>
+    </div>
+    
     <button type="submit">Login</button>
+    
+    <div id="register-link">
+      <p>Don't have an account? <a href="/account/register.html">Register here</a></p>
   </form>
   <div id="login-error-message"></div>
-  <div id="register-link">
-    <p>Don't have an account? <a href="/account/register.html">Register here</a></p>
   </div>
 </body>
 </html>

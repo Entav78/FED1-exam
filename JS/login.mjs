@@ -1,5 +1,9 @@
+
 import './header.mjs';
-//import './adminLoginLink.mjs';//
+import { initPasswordToggle } from './Account/showHidePassword.mjs';
+
+initPasswordToggle();
+
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
   event.preventDefault(); // Prevent default form submission
 
@@ -22,7 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
       const data = await response.json();
 
-      // Assuming accessToken is within a nested object, adjust accordingly
+      // Extract accessToken from the response
       const accessToken = data.data ? data.data.accessToken : data.accessToken; //ChatGPT helped me figure out this since the token is within a nested object//
 
       if (accessToken) {

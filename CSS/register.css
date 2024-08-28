@@ -1,0 +1,79 @@
+@import url('/CSS/header.css');
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+  margin: auto;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.show-password {
+  background-image: url('/assets/icon/eye-show.svg');
+}
+
+.hide-password {
+  background-image: url('/assets/icon/eye-hide.svg');
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#register-error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+#togglePassword {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+@media (max-width: 500px) {
+  form {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
