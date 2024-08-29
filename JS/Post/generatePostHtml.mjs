@@ -1,33 +1,28 @@
 export function generatePostHtml(post) {
-    const postContainer = document.createElement("div");
-    postContainer.classList.add("blog-post");
-  
-    const postTitle = document.createElement("h2");
-    postTitle.textContent = post.title;
-  
-    const postContent = document.createElement("p");
-    postContent.textContent = post.content;
-  
-    const editButton = document.createElement("button");
-    editButton.textContent = "Edit";
-    editButton.classList.add("edit-button");
-    editButton.addEventListener("click", () => {
-      window.location.href = `/edit.html?id=${post.id}`;
-    });
-  
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.classList.add("delete-button");
-    deleteButton.addEventListener("click", () => {
-      if (confirm("Are you sure you want to delete this post?")) {
-        deletePost(post.id);
-      }
-    });
+  const postContainer = document.createElement("div");
+  postContainer.classList.add("blog-post");
 
-    postContainer.append(postTitle, postContent, editButton, deleteButton);
+  const postTitle = document.createElement("h2");
+  postTitle.textContent = post.title;
 
-    return postContainer;
-  }
+  const postAuthor = document.createElement("p");
+  postAuthor.textContent = `By: ${post.author}`;
+
+  const postDate = document.createElement("p");
+  postDate.textContent = `Published on: ${new Date(post.publicationDate).toLocaleDateString()}`;
+
+  const postImage = document.createElement("img");
+  postImage.src = post.image;
+  postImage.alt = post.title;
+
+  const postContent = document.createElement("p");
+  postContent.textContent = post.content;
+
+  postContainer.append(postTitle, postAuthor, postDate, postImage, postContent);
+
+  return postContainer;
+}
+
 
   export async function deletePost(postId) {
     const token = localStorage.getItem("accessToken");
