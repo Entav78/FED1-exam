@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Post Edit</title>
   <script type="module" src="/JS/postEdit.mjs" defer></script>
-  <link rel="stylesheet" href="/CSS/header.css">
+  <link rel="stylesheet" href="/CSS/postEdit.css">
 </head>
 <body>
 <main>
@@ -39,35 +39,31 @@
     </nav>
 
     <h1>Edit Post</h1>
-
     <form id="editPostForm">
-    <input type="hidden" id="postId">
-    <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" required>
-    </div>
-    <div>
-        <label for="author">Author:</label>
-        <input type="text" id="author" required>
-    </div>
-    <div>
-        <label for="publicationDate">Publication Date:</label>
-        <input type="text" id="publicationDate" disabled> <!-- Display publication date but make it uneditable -->
-    </div>
-    <div>
-        <label for="content">Content:</label>
-        <textarea id="content" required></textarea>
-    </div>
-    <div>
-        <label for="image">Image URL:</label>
-        <input type="url" id="image">
-    </div>
-    
-    <button type="submit" id="actionButton">Publish Post</button>
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" disabled>
+        </div>
+        <div>
+            <label for="publicationDate">Publication Date:</label>
+            <input type="text" id="publicationDate" name="publicationDate" disabled>
+        </div>
+        <div>
+            <label for="content">Content:</label>
+            <div id="content" name="content" contenteditable="true" class="content-editor"></div>
+        </div>
+        <div>
+            <label for="imageFile">Upload Image:</label>
+            <input type="file" id="imageFile" name="image" accept=".jpg, .jpeg, .png, .gif, .bmp, .webp">
+        </div>
+        <button type="submit" id="actionButton">Publish Post</button>
     </form>
 
     <button id="deletePostButton">Delete Post</button>
-
     <p id="message"></p>
 
 </main>

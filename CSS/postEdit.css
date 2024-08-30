@@ -1,0 +1,17 @@
+@import url('/CSS/header.css');
+
+.content-editor {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  line-height: 1.5;
+  cursor: text;
+}
+
+.content-editor img {
+  max-width: 80%;
+  margin: 10px 0;
+  display: block;
+}
