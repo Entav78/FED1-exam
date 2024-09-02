@@ -39,7 +39,7 @@ export function generatePostHtml(post) {
       }
   
       alert("Post deleted successfully!");
-      window.location.href = "/posts.html";
+      window.location.href = "/post/index.html";
       
     } catch (error) {
       console.error("Failed to delete post:", error);

@@ -1,10 +1,9 @@
 import { LOGIN_ENDPOINT } from '../endpoints.mjs'; 
 import { fetchData } from '../fetchData.mjs'; 
 import '../header.mjs';
-import { initPasswordToggle } from './showHidePassword.mjs'; 
+import { initPasswordToggle } from '../Account/showHidePassword.mjs'; 
 
 initPasswordToggle();
-
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 

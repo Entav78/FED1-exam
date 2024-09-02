@@ -32,12 +32,16 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         if (response.data) {
             console.log("Registration successful, user data:", response.data);
             localStorage.setItem("userName", response.data.name); // Store the user's name
-            localStorage.setItem("accessToken", response.data.accessToken); // Store the access token
+            localStorage.setItem("accessToken", response.data.accessToken);
             window.location.href = "/login.html";
         } else if (response.errors && response.errors.length > 0) {
             const errorMessage = response.errors[0].message;
             console.log("Error message from API:", errorMessage);
             document.getElementById("register-error-message").innerText = errorMessage;
+
+            if (errorMessage.includes("Profile already exists")) {
+                console.warn("User already registered with this email.");
+            } 
         } else {
             document.getElementById("register-error-message").innerText = "An unknown error occurred. Please try again.";
         }
