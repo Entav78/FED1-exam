@@ -13,13 +13,4 @@ export function getPostsEndpoint() {
     return `${API_URL}/blog/posts/${userName}`;
 }
 
-
-/*
-import { API_URL } from './apiUrl.mjs';
-
-const userName = localStorage.getItem("userName") || "defaultUserName";
-
-export const REGISTER_ENDPOINT = `${API_URL}/auth/register`;
-export const LOGIN_ENDPOINT = `${API_URL}/auth/login`;
-export const POSTS_ENDPOINT = `${API_URL}/blog/posts/${localStorage.getItem("userName")}`;
-*/
+export const getPostEndpoint = (username, postId) => `${API_URL}/blog/posts/${username}/${postId}`;

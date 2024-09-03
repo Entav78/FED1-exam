@@ -3,21 +3,30 @@ export function generatePostHtml(post) {
   postContainer.classList.add("blog-post");
 
   const postTitle = document.createElement("h2");
-  postTitle.textContent = post.title;
+  postTitle.textContent = post.title || "No title found";
 
   const postAuthor = document.createElement("p");
-  postAuthor.textContent = `By: ${post.author}`;
+  postAuthor.textContent = `By: ${post.author.name || post.author}`;
 
   const postDate = document.createElement("p");
   postDate.textContent = `Published on: ${new Date(post.publicationDate).toLocaleDateString()}`;
 
-  const postImage = document.createElement("img");
-  // Update to use the media object
-  postImage.src = post.media ? post.media.url : ""; // Check if media exists
-  postImage.alt = post.media ? post.media.alt : post.title;
+const postImage = document.createElement("img");
+if (post.media && post.media.url) {
+  postImage.src = post.media.url;
+  postImage.alt = post.media.alt || post.title;
+  postImage.style.border = "2px solid red"; // Debug: Add a border to check visibility
+  postImage.style.display = "block"; // Ensure the image is displayed
+  postImage.style.width = "auto"; // Adjust width if needed
+  console.log("Image created with URL:", post.media.url); // Log to ensure URL is correct
+} else {
+  postImage.style.display = "none";
+  console.warn("No image URL provided for this post.");
+}
+
 
   const postContent = document.createElement("p");
-  postContent.textContent = post.body; // Use `body` instead of `content` if that's the correct property
+  postContent.textContent = post.body || "No content available."; //use body here??
 
   postContainer.append(postTitle, postAuthor, postDate, postImage, postContent);
 

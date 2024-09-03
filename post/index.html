@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Post</title>
-  <link rel="stylesheet" href="/CSS/header.css">
-  <script type="module" src="/JS/postIndex.mjs" defer></script>
+  <link rel="stylesheet" href="/CSS/postIndex.css">
+  <script type="module" src="/JS/Post/postIndex.mjs" defer></script>
   
 </head>
 <body>
@@ -38,6 +38,10 @@
     </ul>
 </nav>
 Blog Post Public Page
+<div id="loadingMessage" style="display: none;">Loading post...</div>
+<div id="errorMessage" style="display: none; color: red;">Failed to load post.</div>
+<div id="postContainer"></div>
+
 
 </body>
 </html>

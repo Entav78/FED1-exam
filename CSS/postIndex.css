@@ -1,0 +1,12 @@
+@import url('/CSS/header.css');
+
+#postContainer {
+  border: 2px solid red;
+  /* Add a visible border to see the container */
+  padding: 10px;
+  /* Add some padding to ensure content isn't cut off */
+  min-height: 200px;
+  /* Ensure the container has a minimum height */
+  background-color: #f9f9f9;
+  /* Add a light background to distinguish the container */
+}
