@@ -12,11 +12,12 @@ export function generatePostHtml(post) {
   postDate.textContent = `Published on: ${new Date(post.publicationDate).toLocaleDateString()}`;
 
   const postImage = document.createElement("img");
-  postImage.src = post.image;
-  postImage.alt = post.title;
+  // Update to use the media object
+  postImage.src = post.media ? post.media.url : ""; // Check if media exists
+  postImage.alt = post.media ? post.media.alt : post.title;
 
   const postContent = document.createElement("p");
-  postContent.textContent = post.content;
+  postContent.textContent = post.body; // Use `body` instead of `content` if that's the correct property
 
   postContainer.append(postTitle, postAuthor, postDate, postImage, postContent);
 
