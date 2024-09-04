@@ -1,16 +1,18 @@
 import './header.mjs';
 import { API_URL } from "./apiUrl.mjs";
+import { initializeManageButton } from './manageButton.mjs'; // Adjust path as necessary
 
+// Load all posts when the DOM is ready
 document.addEventListener("DOMContentLoaded", function() {
-  loadPosts();
+  loadPosts(); // Corrected to load all posts
 });
 
-// Function to load and display all posts
-async function loadPosts() {
-  const postsContainer = document.getElementById("postsContainer");
+// Function to load and display all posts for the user
+async function loadPosts() { // Corrected function name to reflect its purpose
+  const postContainer = document.getElementById("postContainer");
 
   // Check if the container exists
-  if (!postsContainer) {
+  if (!postContainer) {
     console.error("Posts container not found in the HTML.");
     return;
   }
@@ -36,12 +38,12 @@ async function loadPosts() {
 
     // Check if posts are returned and are in array format
     if (!Array.isArray(posts) || posts.length === 0) {
-      postsContainer.innerHTML = '<p>No posts found for this user.</p>';
+      postContainer.innerHTML = '<p>No posts found for this user.</p>';
       return;
     }
 
     // Clear existing content in case of re-render
-    postsContainer.innerHTML = '';
+    postContainer.innerHTML = '';
 
     posts.forEach(post => {
       // Create post card
@@ -55,11 +57,16 @@ async function loadPosts() {
 
       // Append link to card and card to container
       postCard.appendChild(postLink);
-      postsContainer.appendChild(postCard);
+      postContainer.appendChild(postCard);
     });
+
+    // Initialize manage buttons, if applicable
+    initializeManageButton();
+
   } catch (error) {
     console.error("Error loading posts:", error);
-    postsContainer.innerHTML = '<p>Failed to load posts. Please try again later.</p>';
+    postContainer.innerHTML = '<p>Failed to load posts. Please try again later.</p>';
   }
 }
+
 

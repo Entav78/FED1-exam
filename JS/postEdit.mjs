@@ -1,17 +1,21 @@
 import './header.mjs';
-import { createPost, updatePost, loadPostData } from '../JS/Post/handlePostForm.mjs';
+import { createPost, updatePost, loadPostData } from './Post/postActions.mjs';
 
 document.addEventListener("DOMContentLoaded", function () {
   const editPostForm = document.getElementById("editPostForm");
   const actionButton = document.getElementById("actionButton");
   const deletePostButton = document.getElementById("deletePostButton");
+  const editPostButton = document.getElementById("editPostButton");
   const imageUrlInput = document.getElementById("imageUrl");
   const contentField = document.getElementById("content");
+  
+  
 
   // Warn if critical elements are missing
   if (!editPostForm) console.warn('Edit Post Form not found. Please check the HTML for id="editPostForm".');
   if (!actionButton) console.warn('Action Button not found. Please check the HTML for id="actionButton".');
   if (!deletePostButton) console.warn('Delete Post Button not found. Please check the HTML for id="deletePostButton".');
+  if (!editPostButton) console.warn('Edit Post Button not found. Please check the HTML for id="editPostButton".');
   if (!imageUrlInput) console.warn('Image URL Input not found. Please check the HTML for id="imageUrl".');
   if (!contentField) console.warn('Content Field not found. Please check the HTML for id="content".');
 
@@ -53,23 +57,24 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!imageUrl) console.warn('Image URL is empty or imageUrlInput not found.');
 
       // Create the post object to send to your API
-      const post = {
-        title: title,
-        author: userName, // The author's name, typically the logged-in user
-        publicationDate: postId ? undefined : new Date().toISOString(), // Set only during creation
-        body: content,
-        media: {
-          url: imageUrl,
-          alt: title || "Post image",
-        },
-      };
+const post = {
+  title: title,
+  author: userName, // The author's name, typically the logged-in user
+  publicationDate: postId ? undefined : new Date().toISOString(), // Set only during creation
+  body: content,
+  media: {
+    url: imageUrl,
+    alt: title || "Post image",
+  },
+};
 
-      console.log('Submitting Post Object:', post); // Log the post object being sent for further debugging
+console.log('Submitting Post Object:', post); // Log the post object being sent for further debugging
 
-       // Call your function to create or update the post
+      // Call your function to create or update the post
       if (postId) {
-        // Remove publicationDate if updating since it's not editable
-        delete post.publicationDate;
+        // Update post with the current date as updatedDate
+        post.updatedDate = new Date().toISOString(); // Set updatedDate during editing
+        delete post.publicationDate; // Remove publicationDate to avoid modifying it
         await updatePost(postId, post);
       } else {
         await createPost(post);
@@ -79,7 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn('Edit Post Form not found. Please check the HTML for id="editPostForm".');
   }
 
-  // Add event listener for the delete button
+  // Event listener for the edit button
+  if (editPostButton) {
+    editPostButton.addEventListener("click", function () {
+      // Call the function to handle editing
+      handleEdit(postId); // Use the appropriate postId or fetch it dynamically if needed
+    });
+  }
+
+  // Event listener for the delete button
   if (deletePostButton) {
     deletePostButton.addEventListener("click", async function () {
       if (!postId) {
@@ -93,6 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// Function to handle editing the post
+function handleEdit(postId) {
+  // Logic to handle editing the post
+  console.log(`Editing post with ID: ${postId}`);
+  // Add your actual edit handling code here
+}
 
 // Function to insert HTML at the cursor position in the contenteditable div
 function insertAtCursor(editableDiv, html) {

@@ -40,7 +40,19 @@
 Blog Post Public Page
 <div id="loadingMessage" style="display: none;">Loading post...</div>
 <div id="errorMessage" style="display: none; color: red;">Failed to load post.</div>
-<div id="postContainer"></div>
+
+<!-- Container for Blog Post -->
+<div id="postContainer">
+  <!-- Example of a Blog Post -->
+  <div class="blog-post" data-post-id="123">
+    <h2>Blog Title</h2>
+    <!-- Hidden Edit/Manage Button for Admin/Owner -->
+    <button class="manage-button" id="manageButton-123" style="display: none;">
+      Edit/Manage
+    </button>
+  </div>
+</div>
+
 
 
 </body>

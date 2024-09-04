@@ -61,9 +61,17 @@
             <input type="text" id="imageUrl" name="imageUrl" placeholder="Paste image URL here">
         </div>
         <button type="submit" id="actionButton">Publish Post</button>
+        <div id="post-list">
+            <div class="post-item" data-post-id="123">
+              <h3>Post Title</h3>
+              <button id="editPostButton" class="editPostButton">Edit Post</button>
+<button id="deletePostButton" class="deletePostButton">Delete Post</button>
+            </div>
+          </div>
+        <div id="undo-container" style="display: none;">
+            <p>Post deleted. <button id="undo-button">Undo</button></p>
+        </div>
     </form>
-
-    <button id="deletePostButton">Delete Post</button>
     <p id="message"></p>
 
 </main>
