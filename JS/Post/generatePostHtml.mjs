@@ -1,3 +1,4 @@
+// generatePostHtml.mjs
 export function generatePostHtml(post) {
   const postContainer = document.createElement("div");
   postContainer.classList.add("blog-post");
@@ -10,9 +11,16 @@ export function generatePostHtml(post) {
   const postAuthor = document.createElement("p");
   postAuthor.textContent = `By: ${post.author.name || post.author}`;
 
+  // Improved date parsing and formatting
+  const rawDate = post.publicationDate || post.created || post.updated;
+  const postDateObject = new Date(rawDate);
+  const formattedDate = !isNaN(postDateObject)
+    ? postDateObject.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    : 'Unknown Date';
+
   // Create post publication date
   const postDate = document.createElement("p");
-  postDate.textContent = `Published on: ${new Date(post.publicationDate).toLocaleDateString()}`;
+  postDate.textContent = `Published on: ${formattedDate}`;
 
   // Create post image
   const postImage = document.createElement("img");
@@ -43,6 +51,7 @@ export function generatePostHtml(post) {
 
   return postContainer;
 }
+
 
 // Function to delete a post
 export async function deletePost(postId) {

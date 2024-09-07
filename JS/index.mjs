@@ -1,6 +1,8 @@
+// index.mjs (Blog Feed Page)
 import './header.mjs';
 import { API_URL } from "./apiUrl.mjs";
 import { initializeManageButton } from './manageButton.mjs'; // Adjust path as necessary
+import './Post/carousel.mjs';
 
 // Load all posts when the DOM is ready
 document.addEventListener("DOMContentLoaded", function() {
@@ -48,15 +50,25 @@ async function loadPosts() { // Corrected function name to reflect its purpose
     posts.forEach(post => {
       // Create post card
       const postCard = document.createElement("div");
-      postCard.className = "post-card";
+      postCard.className = "post-card blog-post";
+      postCard.setAttribute("data-post-id", post.id); // Add data attribute for post ID
 
       // Create post link
       const postLink = document.createElement("a");
       postLink.href = `/post/index.html?id=${post.id}`;
       postLink.textContent = post.title || "Untitled Post"; // Display post title or fallback
 
-      // Append link to card and card to container
+      // Create Edit/Manage button
+      const manageButton = document.createElement("button");
+      manageButton.className = "manage-button";
+      manageButton.textContent = "Edit/Manage";
+      manageButton.style.display = "none"; // Initially hidden, shown by initializeManageButton
+
+      // Append link and manage button to the card
       postCard.appendChild(postLink);
+      postCard.appendChild(manageButton);
+
+      // Append card to the container
       postContainer.appendChild(postCard);
     });
 
@@ -68,5 +80,6 @@ async function loadPosts() { // Corrected function name to reflect its purpose
     postContainer.innerHTML = '<p>Failed to load posts. Please try again later.</p>';
   }
 }
+
 
 

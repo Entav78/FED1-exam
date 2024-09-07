@@ -20,14 +20,15 @@ export async function fetchData(url, method = 'GET', body = null, token = null) 
 
     console.log("Full response object:", response);
 
+    // Parse the response JSON once
+    const data = await response.json();
+
+    // Check for error status and handle it
     if (!response.ok) {
-      // Try parsing the response body to log detailed error information
-      const errorData = await response.json().catch(() => ({}));
-      console.error("Error response from API:", errorData);
-      throw new Error(`Failed to fetch data: ${errorData.errors?.[0]?.message || response.statusText}`);
+      console.error("Error response from API:", data);
+      throw new Error(`Failed to fetch data: ${data.errors?.[0]?.message || response.statusText}`);
     }
 
-    const data = await response.json();
     console.log("Parsed response data:", data);
     return data;
   } catch (error) {
@@ -35,6 +36,7 @@ export async function fetchData(url, method = 'GET', body = null, token = null) 
     throw error;
   }
 }
+
 
 
 /*
