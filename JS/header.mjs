@@ -18,31 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isLoggedIn) {
       if (screenWidth > 800) {
         if (managePostLink1) {
-          managePostLink1.style.display = 'block'; // Show on large screens when logged in
+          managePostLink1.style.display = 'block'; 
           console.log('Displaying managePostLink1 (large screen, logged in)');
         }
         if (managePostLink2) {
-          managePostLink2.style.display = ''; // Clear inline display style to respect CSS
+          managePostLink2.style.display = 'none'; // Ensure sidebar link is hidden on large screens
           console.log('Hiding managePostLink2 (small screen, logged in)');
         }
       } else {
         if (managePostLink1) {
-          managePostLink1.style.display = 'none'; // Hide on small screens
+          managePostLink1.style.display = 'none'; // Hide large screen link on small screens
           console.log('Hiding managePostLink1 (large screen, logged in)');
         }
-        // Ensure managePostLink2 is hidden unless sidebar is active
         if (managePostLink2) {
-          if (sidebar.classList.contains('active')) {
-            managePostLink2.style.display = ''; // Clear inline display style to respect CSS
-            console.log('Displaying managePostLink2 inside the sidebar (small screen, logged in)');
-          } else {
-            managePostLink2.style.display = 'none'; // Only hide explicitly if sidebar isn't active
-            console.log('Hiding managePostLink2 (small screen, sidebar inactive)');
-          }
+          managePostLink2.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+          console.log(sidebar.classList.contains('active') 
+            ? 'Displaying managePostLink2 inside the sidebar (small screen, logged in)'
+            : 'Hiding managePostLink2 (small screen, sidebar inactive)');
         }
       }
     } else {
-      // If not logged in, hide both links
       if (managePostLink1) {
         managePostLink1.style.display = 'none';
         console.log('Hiding managePostLink1 (not logged in)');
@@ -52,8 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log('Hiding managePostLink2 (not logged in)');
       }
     }
-
-    console.log(`Manage Post link visibility updated: Screen Width = ${screenWidth}, Logged In = ${isLoggedIn}`);
   }
 
   console.log("Initializing header visibility updates.");
@@ -67,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       closeBtn.addEventListener("click", function () {
         sidebar.classList.remove('active'); // Hide the sidebar
         updateLinkVisibility();
+        console.log('Sidebar closed via close button.');
       });
     }
 
@@ -74,17 +68,21 @@ document.addEventListener("DOMContentLoaded", function () {
       menuBtn.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent default link behavior
         sidebar.classList.toggle('active'); // Toggle sidebar visibility
-        console.log('Hamburger menu clicked, sidebar toggled');
+        console.log('Hamburger menu clicked, sidebar state:', sidebar.classList.contains('active'));
         updateLinkVisibility(); // Update link visibility when sidebar is toggled
       });
+    } else {
+      console.error('Hamburger menu not found or event listener not attached correctly.');
     }
+  } else {
+    console.error('Sidebar not found in the DOM.');
   }
 
   // Update visibility on window resize
   window.addEventListener("resize", function () {
     if (window.innerWidth > 800 && sidebar) {
       console.log('Resize event triggered in header.mjs');
-      sidebar.classList.remove('active');
+      sidebar.classList.remove('active'); // Hide sidebar when resizing to a large screen
     }
     updateLinkVisibility(); // Ensure link visibility is updated on resize
   });
@@ -100,6 +98,11 @@ document.addEventListener("DOMContentLoaded", function () {
     updateLinkVisibility();
   });
 });
+
+
+
+
+
 
 
 

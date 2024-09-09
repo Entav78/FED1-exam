@@ -29,6 +29,7 @@ async function loadPost(username, postId) {
 }
 
 // Fetch Post Function with Improved Error Handling
+// Fetch Post Function with Improved Error Handling
 async function fetchPost(endpoint, token = null) {
   const loadingMessage = document.getElementById("loadingMessage");
   const errorMessage = document.getElementById("errorMessage");
@@ -38,6 +39,9 @@ async function fetchPost(endpoint, token = null) {
     console.warn('Post container not found. Please check if there is an element with id="postContainer" in the HTML.');
     return;
   }
+
+  // Clear existing content before appending new post
+  postContainer.innerHTML = '';
 
   if (loadingMessage) loadingMessage.style.display = 'block';
   if (errorMessage) errorMessage.style.display = 'none';
@@ -68,6 +72,9 @@ async function fetchPost(endpoint, token = null) {
     // Generate and display the post HTML
     const postHtml = generatePostHtml(postData);
     postContainer.appendChild(postHtml);
+    
+    // Ensure initializeManageButton is called after content is loaded
+    console.log("Initializing manage buttons after post content is loaded.");
     initializeManageButton();
 
   } catch (error) {
@@ -80,6 +87,8 @@ async function fetchPost(endpoint, token = null) {
     if (loadingMessage) loadingMessage.style.display = 'none';
   }
 }
+
+
 
 
 

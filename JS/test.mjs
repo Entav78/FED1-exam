@@ -8,14 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const managePostLink1 = document.getElementById('managePostLink1'); // "Manage Posts" link for large screens
   const managePostLink2 = document.getElementById('managePostLink2'); // "Manage Posts" link for small screens (hamburger menu)
   
-
   // Function to update the visibility of the "Manage Post" links based on login status and screen size
   function updateLinkVisibility() {
     const isLoggedIn = !!localStorage.getItem('accessToken');
     const screenWidth = window.innerWidth;
     console.log('Event listeners set up in header.mjs');
     
-
     // Show or hide links based on screen size and login status
     if (isLoggedIn) {
       if (screenWidth > 800) {
