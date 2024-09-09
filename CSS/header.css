@@ -15,14 +15,29 @@ body {
 nav {
   background-color: white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+  /* This allows the hamburger to position relative to the nav */
 }
 
+/*
 .main-nav {
   width: 100%;
   list-style: none;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+*/
+.main-nav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul {
@@ -97,10 +112,25 @@ nav li:first-child {
   fill: #000000;
 }
 
+/*
 .hamburger-menu {
   display: block;
-  /* Visible on small screens */
   cursor: pointer;
+}
+*/
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  position: absolute;
+  /* Positions the hamburger relative to the nav */
+  right: 10px;
+  /* Adjust this value to control the distance from the right */
+  top: 10px;
+  /* Adjust this to vertically align the hamburger as desired */
+  display: block;
+  cursor: pointer;
+  z-index: 1000;
+  /* Ensure it's above other elements */
 }
 
 .hamburger-icon {
