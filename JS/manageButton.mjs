@@ -1,27 +1,21 @@
-// Function to initialize Manage Button visibility and setup redirection
+// manageButton.mjs
 export function initializeManageButton() {
-  const isLoggedIn = !!localStorage.getItem('accessToken'); // Check if the user is logged in
+  const isLoggedIn = !!localStorage.getItem('accessToken');
 
-  // Find all manage buttons within posts
-  document.querySelectorAll('.manage-button').forEach(button => {
-    const postId = button.closest('.blog-post').getAttribute('data-post-id'); // Get the post ID from the parent element
-
-    // Show button only if the user is logged in
+  document.querySelectorAll('.manage-button').forEach((button) => {
     if (isLoggedIn) {
-      button.style.display = 'inline-block'; // Show the button
-
-      // Set up the click event to redirect to the manage post page
-      button.addEventListener('click', () => {
-        window.location.href = `/post/edit.html?id=${postId}`; // Redirect to edit page with the post ID
-      });
+      button.style.display = 'inline-block'; // Show the button if logged in
+    } else {
+      button.style.display = 'none'; // Hide the button if not logged in
     }
   });
+  console.log('Initializing Manage Buttons');
+document.querySelectorAll('.manage-button').forEach((button) => {
+  console.log('Current button display:', button.style.display);
+});
+
 }
 
-// Call initializeManageButton to activate buttons on page load
-document.addEventListener("DOMContentLoaded", () => {
-  initializeManageButton();
-});
 
 
 function redirectToManage(postId) {

@@ -3,68 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>apiRequest test</title>
-    <script type="module" src="./JS/testApi.mjs"></script>
-    <link rel="stylesheet" href="/CSS/register.css">
+    <title>Blog Feed</title>
+    <script type="module" src="/JS/test.mjs" defer></script>
+    <link rel="stylesheet" href="/CSS/header.css">
 </head>
 <body>
-    <nav> 
-      <ul class="sidebar">
-          <li><a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="club-icon">
-              <path d="M0 0h24v24H0V0z" fill="none"/>
-              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-          </svg></a></li>
-          <li><a href="/index.html">Blog Feed</a></li>
-          <li><a href="/post/index.html">Blog Post</a></li>
-          <li id="editPostLink"><a href="/post/edit.html">Edit Posts</a></li>
-          <li><a href="/account/login.html" id="adminLoginLink">Admin Login</a></li>
+  <nav> 
+    <ul class="sidebar">
+     <li><a href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" class="club-icon">
+        <path d="M0 0h24v24H0V0z" fill="none"/>
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+      </svg></a></li>
+      <li><a href="/index.html">Blog Feed</a></li>
+      <li><a href="/post/index.html">Blog Post</a></li>
+      <li id="managePostLink1"><a href="/post/edit.html">Manage Posts</a></li>
+      <li><a href="/account/login.html" id="adminLoginLink">Admin Login</a></li>
       </ul>
       <ul>
-          <li><a href="#">Coding2go</a></li>
-          <li class="hideOnMobile"><a href="http://127.0.0.1:5500/index.html">Blog Feed</a></li>
-          <li class="hideOnMobile"><a href="http://127.0.0.1:5500/post/index.html">Blog Post</a></li>
-          <li class="hideOnMobile" id="editPostLink"><a href="/post/edit.html">Edit Posts</a></li>
-          <li class="hideOnMobile"><a href="/account/login.html" id="adminLoginLink">Admin Login</a></li>
-          <li class="hamburger-menu">
-            <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="hamburger-icon">
-                    <path d="M0 0h24v24H0V0z" fill="none"/>
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                </svg>
-            </a>
+        <li><a href="#">Coding2go</a></li>
+        <li class="hideOnMobile"><a href="/index.html">Blog Feed</a></li>
+        <li class="hideOnMobile"><a href="/post/index.html">Blog Post</a></li>
+        <li class="hideOnMobile" id="managePostLink2"><a href="/post/edit.html">Manage Posts</a></li>
+        <li class="hideOnMobile"><a href="/account/login.html" id="adminLoginLink">Admin Login</a></li>
+        <li class="hamburger-menu">
+          <a href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" class="hamburger-icon">
+              <path d="M0 0h24v24H0V0z" fill="none"/>
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </a>
         </li>
-      </ul>
+    </ul>    
   </nav>
+    <h1>Blog Feed</h1>
     
-    <form id="registerForm">
-      <h1>Register a New Account</h1>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" autocomplete="name" required>
-  
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" autocomplete="email" required>
-  
-      <label for="password">Password:</label>
-      
-        <div class="password-wrapper">
-          <input type="password" id="password" name="password" autocomplete="new-password" required>
-          <span id="togglePassword" class="toggle-password hide-password"></span>
-    
-        </div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <div class="password-wrapper">
-          <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required>
-          <span id="toggleConfirmPassword" class="toggle-password password-hide"></span>
-      </div>
-      <button type="submit">Register</button>
-      <div id="login-link">
-        <p>Already have an account? <a href="/account/login.html">Log in here</a></p>
-      </div>
-      <div id="register-error-message"></div>
-    </form>
-    
-    
-  </body>
-</html>
 
+<div class="carousel">
+  <button class="carousel-button prev">&lt;</button>
+  
+  <div class="carousel-track-container">
+    <ul class="carousel-track">
+      <!-- Slides will be dynamically inserted here by JavaScript -->
+    </ul>
+  </div>
+  
+  <button class="carousel-button next">&gt;</button>
+  
+  <!-- Carousel Navigation Dots -->
+  <div class="carousel-nav">
+    <!-- Dots will be dynamically inserted here by JavaScript -->
+  </div>
+</div>
+
+<div id="postContainer">
+  <!-- Example of a Blog Post -->
+  <div class="blog-post" data-post-id="123">
+    <h2>Blog Title</h2>
+    <p>Blog content goes here...</p>
+    <!-- Hidden Edit/Manage Button for Admin/Owner -->
+    <button class="manage-button" style="display: none;">
+      Edit/Manage
+    </button>
+  </div>
+</div>
+  
+
+</body>
+</html>

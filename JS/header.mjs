@@ -1,6 +1,7 @@
 import './Account/adminLoginLink.mjs';
 
 document.addEventListener("DOMContentLoaded", function () {
+  console.log('DOMContentLoaded event triggered in header.mjs');
   const sidebar = document.querySelector('.sidebar');
   const closeBtn = sidebar ? sidebar.querySelector('li') : null;
   const menuBtn = document.querySelector('.hamburger-menu');
@@ -11,31 +12,33 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateLinkVisibility() {
     const isLoggedIn = !!localStorage.getItem('accessToken');
     const screenWidth = window.innerWidth;
-
-    console.log(`Updating link visibility: screenWidth = ${screenWidth}, isLoggedIn = ${isLoggedIn}`);
+    console.log('Updating link visibility: screenWidth =', screenWidth, ', isLoggedIn =', isLoggedIn);
 
     // Show or hide links based on screen size and login status
     if (isLoggedIn) {
       if (screenWidth > 800) {
         if (managePostLink1) {
-          managePostLink1.style.display = 'block';
+          managePostLink1.style.display = 'block'; // Show on large screens when logged in
           console.log('Displaying managePostLink1 (large screen, logged in)');
         }
         if (managePostLink2) {
-          managePostLink2.style.display = 'none';
+          managePostLink2.style.display = ''; // Clear inline display style to respect CSS
           console.log('Hiding managePostLink2 (small screen, logged in)');
         }
       } else {
         if (managePostLink1) {
-          managePostLink1.style.display = 'none';
+          managePostLink1.style.display = 'none'; // Hide on small screens
           console.log('Hiding managePostLink1 (large screen, logged in)');
         }
         // Ensure managePostLink2 is hidden unless sidebar is active
-        if (managePostLink2 && sidebar.classList.contains('active')) {
-          managePostLink2.style.display = 'block';
-          console.log('Displaying managePostLink2 inside the sidebar (small screen, logged in)');
-        } else {
-          managePostLink2.style.display = 'none';
+        if (managePostLink2) {
+          if (sidebar.classList.contains('active')) {
+            managePostLink2.style.display = ''; // Clear inline display style to respect CSS
+            console.log('Displaying managePostLink2 inside the sidebar (small screen, logged in)');
+          } else {
+            managePostLink2.style.display = 'none'; // Only hide explicitly if sidebar isn't active
+            console.log('Hiding managePostLink2 (small screen, sidebar inactive)');
+          }
         }
       }
     } else {
@@ -53,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(`Manage Post link visibility updated: Screen Width = ${screenWidth}, Logged In = ${isLoggedIn}`);
   }
 
-  // Initial update of visibility
+  console.log("Initializing header visibility updates.");
   updateLinkVisibility();
 
   // Handle sidebar toggle
@@ -80,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update visibility on window resize
   window.addEventListener("resize", function () {
     if (window.innerWidth > 800 && sidebar) {
+      console.log('Resize event triggered in header.mjs');
       sidebar.classList.remove('active');
     }
     updateLinkVisibility(); // Ensure link visibility is updated on resize
@@ -96,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateLinkVisibility();
   });
 });
+
 
 
 

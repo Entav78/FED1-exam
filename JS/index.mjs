@@ -1,4 +1,3 @@
-// index.mjs (Blog Feed Page)
 import './header.mjs';
 import { API_URL } from "./apiUrl.mjs";
 import { initializeManageButton } from './manageButton.mjs'; // Adjust path as necessary
