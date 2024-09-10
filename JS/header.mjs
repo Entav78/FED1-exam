@@ -1,96 +1,107 @@
-import './Account/adminLoginLink.mjs';
-
 document.addEventListener("DOMContentLoaded", function () {
-  console.log('DOMContentLoaded event triggered in header.mjs');
   const sidebar = document.querySelector('.sidebar');
   const closeBtn = sidebar ? sidebar.querySelector('li') : null;
   const menuBtn = document.querySelector('.hamburger-menu');
-  const managePostLink1 = document.getElementById('managePostLink1'); // "Manage Posts" link for large screens
-  const managePostLink2 = document.getElementById('managePostLink2'); // "Manage Posts" link for small screens (hamburger menu)
+  const managePostLink1 = document.getElementById('managePostLink1');
+  const managePostLink2 = document.getElementById('managePostLink2');
+  const adminLoginLinks = document.querySelectorAll("#adminLoginLink"); // Select all admin login buttons
 
-  // Function to update the visibility of the "Manage Post" links based on login status and screen size
+  // Function to update the visibility of "Manage Post" links and admin login button based on login status
   function updateLinkVisibility() {
-    const isLoggedIn = !!localStorage.getItem('accessToken');
+    const isLoggedIn = !!localStorage.getItem("accessToken");
     const screenWidth = window.innerWidth;
-    console.log('Updating link visibility: screenWidth =', screenWidth, ', isLoggedIn =', isLoggedIn);
 
-    // Show or hide links based on screen size and login status
+    // Show or hide "Manage Posts" links based on screen size and login status
     if (isLoggedIn) {
       if (screenWidth > 800) {
         if (managePostLink1) {
-          managePostLink1.style.display = 'block'; 
-          console.log('Displaying managePostLink1 (large screen, logged in)');
+          managePostLink1.style.display = 'block';
         }
         if (managePostLink2) {
-          managePostLink2.style.display = 'none'; // Ensure sidebar link is hidden on large screens
-          console.log('Hiding managePostLink2 (small screen, logged in)');
+          managePostLink2.style.display = 'none';
         }
       } else {
         if (managePostLink1) {
-          managePostLink1.style.display = 'none'; // Hide large screen link on small screens
-          console.log('Hiding managePostLink1 (large screen, logged in)');
+          managePostLink1.style.display = 'none';
         }
         if (managePostLink2) {
           managePostLink2.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
-          console.log(sidebar.classList.contains('active') 
-            ? 'Displaying managePostLink2 inside the sidebar (small screen, logged in)'
-            : 'Hiding managePostLink2 (small screen, sidebar inactive)');
         }
       }
+
+      // Update admin login links to "Log Out"
+      adminLoginLinks.forEach((link) => {
+        link.textContent = "Log Out";
+        link.href = "#"; // Prevents navigation when clicking "Log Out"
+        link.removeEventListener('click', handleLogout); // Ensure no duplicate listeners
+        link.addEventListener('click', handleLogout); // Attach the logout handler
+      });
     } else {
+      // If not logged in, hide both "Manage Posts" links
       if (managePostLink1) {
         managePostLink1.style.display = 'none';
-        console.log('Hiding managePostLink1 (not logged in)');
       }
       if (managePostLink2) {
         managePostLink2.style.display = 'none';
-        console.log('Hiding managePostLink2 (not logged in)');
       }
+
+      // Update admin login links to "Admin Login"
+      adminLoginLinks.forEach((link) => {
+        link.textContent = "Admin Login";
+        link.href = "/account/login.html"; // Set the login URL
+        link.removeEventListener('click', handleLogout); // Remove the logout handler when not logged in
+      });
     }
   }
 
-  console.log("Initializing header visibility updates.");
+  // Handle user logout
+  function handleLogout(event) {
+    event.preventDefault();
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userName");
+
+    // Check if on the edit page and redirect appropriately
+    if (window.location.pathname === "/post/edit.html") {
+      window.location.href = "/index.html";
+    } else {
+      window.location.reload();
+    }
+  }
+
+  // Initialize visibility updates on page load
   updateLinkVisibility();
 
-  // Handle sidebar toggle
+  // Sidebar toggle behavior
   if (sidebar) {
     sidebar.classList.remove('active');
 
     if (closeBtn) {
       closeBtn.addEventListener("click", function () {
-        sidebar.classList.remove('active'); // Hide the sidebar
+        sidebar.classList.remove('active');
         updateLinkVisibility();
-        console.log('Sidebar closed via close button.');
       });
     }
 
     if (menuBtn) {
       menuBtn.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent default link behavior
-        sidebar.classList.toggle('active'); // Toggle sidebar visibility
-        console.log('Hamburger menu clicked, sidebar state:', sidebar.classList.contains('active'));
-        updateLinkVisibility(); // Update link visibility when sidebar is toggled
+        event.preventDefault();
+        sidebar.classList.toggle('active');
+        updateLinkVisibility();
       });
-    } else {
-      console.error('Hamburger menu not found or event listener not attached correctly.');
     }
-  } else {
-    console.error('Sidebar not found in the DOM.');
   }
 
   // Update visibility on window resize
   window.addEventListener("resize", function () {
     if (window.innerWidth > 800 && sidebar) {
-      console.log('Resize event triggered in header.mjs');
-      sidebar.classList.remove('active'); // Hide sidebar when resizing to a large screen
+      sidebar.classList.remove('active');
     }
-    updateLinkVisibility(); // Ensure link visibility is updated on resize
+    updateLinkVisibility();
   });
 
   // Listen for changes to the accessToken to update the navigation state
   window.addEventListener('storage', function () {
-    console.log("Access token updated, checking visibility...");
-    updateLinkVisibility(); // Update visibility when login status changes
+    updateLinkVisibility();
   });
 
   // Ensure visibility is correctly managed upon page load and interaction
@@ -98,6 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
     updateLinkVisibility();
   });
 });
+
+
+
+
+
 
 
 

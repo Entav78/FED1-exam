@@ -1,3 +1,4 @@
+/* Base styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,72 +7,71 @@
 
 body {
   min-height: 100vh;
+  font-family: 'Times New Roman', Times, serif;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  font-family: 'Times New Roman', Times, serif;
 }
 
 nav {
-  background-color: white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: white;
   padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
-  /* This allows the hamburger to position relative to the nav */
 }
 
-/*
-.main-nav {
-  width: 100%;
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-*/
+/* Main navigation styling */
 .main-nav {
   list-style: none;
   display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
+  flex-grow: 1;
+  /* Allows the main-nav to take up space */
 }
 
-nav ul {
-  width: 100%;
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-nav li {
-  height: 50px;
-}
-
-nav a {
-  height: 100%;
-  padding: 0 30px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  color: black;
-}
-
-nav a:hover {
-  background-color: #f0f0f0;
-}
-
-nav li:first-child {
+.main-nav li:first-child {
   margin-right: auto;
+  /* Pushes the rest of the items to the right */
 }
 
+.main-nav li {
+  margin-left: 20px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: black;
+  padding: 10px 15px;
+}
+
+.main-nav a:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  display: block;
+  z-index: 1000;
+}
+
+.hamburger-icon {
+  width: 26px;
+  height: 26px;
+  fill: #000;
+}
+
+/* Sidebar Styles */
 .sidebar {
   display: none;
-  /* Sidebar hidden by default */
   position: fixed;
   top: 0;
   right: 0;
@@ -82,130 +82,79 @@ nav li:first-child {
   backdrop-filter: blur(10px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-top: 10px;
-  transition: transform 0.3s ease, display 0s;
+  padding-top: 50px;
   transform: translateX(100%);
-  /* Off-screen initially */
+  transition: transform 0.3s ease;
 }
 
 .sidebar.active {
   display: flex;
-  /* Set sidebar to flex when active */
   transform: translateX(0);
-  /* Slide sidebar into view */
 }
 
 .sidebar li {
-  width: 100%;
+  list-style: none;
+  margin: 10px 0;
 }
 
 .sidebar a {
-  width: 100%;
+  text-decoration: none;
+  color: black;
   padding: 15px;
-}
-
-.club-icon {
-  width: 26px;
-  height: 24px;
-  fill: #000000;
-}
-
-/*
-.hamburger-menu {
   display: block;
-  cursor: pointer;
+  width: 100%;
 }
-*/
 
-/* Hamburger Menu Styles */
-.hamburger-menu {
+.close-sidebar {
   position: absolute;
-  /* Positions the hamburger relative to the nav */
-  right: 10px;
-  /* Adjust this value to control the distance from the right */
   top: 10px;
-  /* Adjust this to vertically align the hamburger as desired */
-  display: block;
+  right: 10px;
   cursor: pointer;
-  z-index: 1000;
-  /* Ensure it's above other elements */
 }
 
-.hamburger-icon {
-  width: 26px;
-  height: 26px;
-  fill: #000000;
-}
-
-/* Large screens (min-width: 801px) */
+/* Large screens */
 @media (min-width: 801px) {
   .hamburger-menu {
     display: none;
-    /* Hide hamburger on large screens */
   }
 
   .main-nav {
     display: flex;
-    /* Show main navigation on large screens */
   }
 
   #managePostLink1 {
     display: block;
-    /* Show large screen Manage Post link */
   }
 
   #managePostLink2 {
     display: none;
-    /* Hide sidebar Manage Post link on large screens */
   }
 }
 
-/* Small screens (max-width: 800px) */
+/* Small screens */
 @media (max-width: 800px) {
   .hamburger-menu {
     display: block;
-    /* Show the hamburger menu */
-    cursor: pointer;
   }
 
   .main-nav {
     display: none;
-    /* Hide main nav links on small screens */
   }
 
   .sidebar {
     display: flex;
-    /* Sidebar set to flex for toggling via JS */
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100vh;
-    /* Full height */
-    background-color: white;
-    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
-    overflow: auto;
-    /* Scrollable content */
-    transition: transform 0.3s ease;
-    /* Smooth sidebar animation */
     transform: translateX(100%);
-    /* Hidden off-screen */
   }
 
   .sidebar.active {
     transform: translateX(0);
-    /* Slide in when active */
-  }
-
-  .sidebar.active #managePostLink2 {
-    display: block !important;
-    /* Show Manage Post link */
   }
 
   #managePostLink1 {
     display: none;
-    /* Hide large screen Manage Post link */
+  }
+
+  .close-sidebar {
+    display: block;
   }
 }
