@@ -15,11 +15,19 @@ body {
 
 nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: white;
   padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+.coding2go-link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  margin-right: auto;
 }
 
 /* Main navigation styling */
@@ -29,13 +37,6 @@ nav {
   align-items: center;
   margin: 0;
   padding: 0;
-  flex-grow: 1;
-  /* Allows the main-nav to take up space */
-}
-
-.main-nav li:first-child {
-  margin-right: auto;
-  /* Pushes the rest of the items to the right */
 }
 
 .main-nav li {
@@ -55,18 +56,49 @@ nav {
 
 /* Hamburger Menu */
 .hamburger-menu {
+  display: none;
   position: absolute;
   right: 10px;
   top: 10px;
   cursor: pointer;
-  display: block;
-  z-index: 1000;
+  z-index: 500;
+  width: 30px;
+  height: 30px;
 }
 
 .hamburger-icon {
-  width: 26px;
-  height: 26px;
+  width: 100%;
+  height: 100%;
   fill: #000;
+}
+
+/* Close Icon */
+.close-icon {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+  padding: 5px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.close-icon svg {
+  width: 100%;
+  /* Make SVG fit within the button */
+  height: 100%;
+  display: block;
+}
+
+.close-icon path {
+  stroke: black;
+  /* Ensures visibility of the X */
+  stroke-width: 2;
+  /* Adjust stroke width to make it look bolder */
+  fill: none;
+  /* Keeps the paths clear */
 }
 
 /* Sidebar Styles */
@@ -77,45 +109,75 @@ nav {
   right: 0;
   height: 100vh;
   width: 250px;
-  z-index: 999;
+  z-index: 550;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   padding-top: 50px;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  /* Add for debugging visibility */
 }
 
 .sidebar.active {
   display: flex;
   transform: translateX(0);
+  /* Add for debugging visibility */
 }
 
 .sidebar li {
   list-style: none;
   margin: 10px 0;
+  padding-left: 15px;
+  /* Add padding to ensure text is not too close to the sidebar edge */
 }
 
 .sidebar a {
   text-decoration: none;
   color: black;
-  padding: 15px;
+  padding: 10px 15px;
   display: block;
   width: 100%;
+  z-index: 10;
+  /* Ensure links are above the close button if necessary */
 }
 
-.close-sidebar {
+/* Hide the hamburger when the sidebar is active */
+.sidebar.active~.hamburger-menu {
+  display: none;
+}
+
+.sidebar.active .close-icon {
   position: absolute;
   top: 10px;
   right: 10px;
+  z-index: 1001;
+  display: block;
+  background-color: transparent;
+  /* Transparent background to avoid covering links */
+  padding: 5px;
+  /* Adjust padding to shrink its clickable area */
+  width: 24px;
+  /* Limit the size */
+  height: 24px;
+  /* Limit the size */
+  border: 1px solid green;
+  /* Keep for debugging, adjust/remove when done */
   cursor: pointer;
+  /* Make sure it's still clickable */
+}
+
+/* Add any necessary z-index adjustments */
+.sidebar a,
+.sidebar .close-icon {
+  z-index: 10;
+  /* Adjust to ensure proper stacking context */
 }
 
 /* Large screens */
 @media (min-width: 801px) {
   .hamburger-menu {
-    display: none;
+    display: none !important;
   }
 
   .main-nav {
@@ -144,6 +206,7 @@ nav {
   .sidebar {
     display: flex;
     transform: translateX(100%);
+    /*transition: transform 0.3s ease;*/
   }
 
   .sidebar.active {
@@ -152,9 +215,5 @@ nav {
 
   #managePostLink1 {
     display: none;
-  }
-
-  .close-sidebar {
-    display: block;
   }
 }
