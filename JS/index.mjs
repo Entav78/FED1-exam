@@ -80,5 +80,16 @@ async function loadPosts() { // Corrected function name to reflect its purpose
   }
 }
 
+// JavaScript for clickable blog posts
+document.addEventListener("DOMContentLoaded", function () {
+  const blogPosts = document.querySelectorAll('.blog-post');
+
+  blogPosts.forEach(post => {
+    post.addEventListener('click', () => {
+      const postId = post.getAttribute('data-post-id');
+      window.location.href = `/post/index.html?id=${postId}`;
+    });
+  });
+});
 
 

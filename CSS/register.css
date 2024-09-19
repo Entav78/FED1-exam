@@ -18,7 +18,7 @@ input {
   border-radius: 4px;
 }
 
-button {
+.auth-button {
   padding: 10px;
   background-color: #4CAF50;
   color: white;
@@ -26,6 +26,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 
 .password-wrapper {
   position: relative;

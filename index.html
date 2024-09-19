@@ -47,33 +47,33 @@
   
   
     <h1>Blog Feed</h1>
-    <div class="carousel">
-      <button class="carousel-button prev">&lt;</button>
-      
-      <div class="carousel-track-container">
-        <ul class="carousel-track">
-          <!-- Slides will be dynamically inserted here by JavaScript -->
-        </ul>
+    <div class="carousel-container">
+      <button class="carousel-button prev">‹</button>
+      <div class="carousel">
+        <div class="carousel-track-container">
+          <ul class="carousel-track">
+            <!-- Carousel slides will be dynamically added here -->
+          </ul>
+        </div>
+        <div class="carousel-nav">
+          <!-- Navigation dots will be dynamically added here -->
+        </div>
       </div>
-      
-      <button class="carousel-button next">&gt;</button>
-      
-      <!-- Carousel Navigation Dots -->
-      <div class="carousel-nav">
-        <!-- Dots will be dynamically inserted here by JavaScript -->
-      </div>
+      <button class="carousel-button next">›</button>
     </div>
-
-    <div id="postContainer">
+    
+    <div id="postContainer" class="post-grid">
       <!-- Example of a Blog Post -->
       <div class="blog-post" data-post-id="123">
-        <h2>Blog Title</h2>
-        <p>Blog content goes here...</p>
+        <img src="path-to-image.jpg" alt="Blog Image" class="post-image">
+        <h2 class="post-title">Blog Title</h2>
+        <p class="post-excerpt">This is a brief summary of the blog content...</p>
         <!-- Hidden Edit/Manage Button for Admin/Owner -->
         <button class="manage-button" style="display: none;">
           Edit/Manage
         </button>
       </div>
+      <!-- Repeat for other posts -->
     </div>
       
 </body>

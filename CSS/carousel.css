@@ -1,17 +1,30 @@
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2vh 0;
+  /* Use vh for vertical padding */
+}
+
 .carousel {
   position: relative;
-  width: 80%;
-  max-width: 800px;
-  margin: auto;
+  max-width: 80vw;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
+/*
 .carousel-track-container {
   overflow: hidden;
-  position: relative;
   width: 100%;
+  position: relative;
 }
-
+*/
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -29,13 +42,27 @@
 
 .carousel-track img {
   width: 100%;
-  height: auto;
+  height: 20vh;
+  object-fit: cover;
   display: block;
+  cursor: pointer;
+}
+
+.carousel-slide {
+  flex: 0 0 33.33%;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-slide:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-slide h3,
 .carousel-slide p {
-  padding: 10px;
+  padding: 1vh;
   text-align: center;
   margin: 0;
 }
@@ -47,20 +74,25 @@
   background: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 4vh;
+  height: 4vh;
   cursor: pointer;
-  z-index: 10;
-  font-size: 18px;
+  z-index: 20;
+  font-size: 2rem;
   border-radius: 50%;
   transition: background 0.3s ease;
 }
 
 .prev {
-  left: 10px;
+  left: 3vw;
 }
 
 .next {
-  right: 10px;
+  right: 3vw;
 }
 
 .carousel-button:focus {
@@ -68,23 +100,82 @@
 }
 
 .carousel-button:hover {
+  transform: translateY(-50%) scale(1.1);
   background: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-nav {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 1vh;
 }
 
 .carousel-nav button {
   background-color: #ccc;
   border: none;
-  padding: 5px;
-  margin: 5px;
+  padding: 0.5vh;
+  margin: 0.5vh;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .carousel-nav button.active {
   background-color: #333;
+}
+
+
+.read-more {
+  position: relative;
+  bottom: 1vh;
+  display: inline-block;
+  left: 70%;
+  padding: 0.5vh 1vh;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  z-index: 2;
+  /*  
+  position: absolute;
+  bottom: 1vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  padding: 0.5vh 1vh;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  z-index: 2;
+*/
+
+}
+
+.read-more:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .carousel-container {
+    flex-direction: column;
+  }
+
+  .carousel-button {
+    width: 5vh;
+    height: 5vh;
+    font-size: 1.8rem;
+  }
+
+  .prev {
+    left: 2vw;
+  }
+
+  .next {
+    right: 2vw;
+  }
 }
