@@ -13,6 +13,26 @@ body {
   background-position: center;
 }
 
+.h1-container {
+  display: flex;
+  /* Use flexbox just for the container of the h1 */
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  width: 100%;
+  /* Ensure it takes the full width */
+  padding: 20px 0;
+  /* Optional: add some vertical spacing */
+}
+
+h1 {
+  margin: 0;
+  /* Reset any default margin */
+  text-align: center;
+  /* Center text inside h1 */
+}
+
 nav {
   display: flex;
   justify-content: space-between;

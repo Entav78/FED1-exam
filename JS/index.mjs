@@ -55,13 +55,32 @@ async function loadPosts() { // Corrected function name to reflect its purpose
       // Create post link
       const postLink = document.createElement("a");
       postLink.href = `/post/index.html?id=${post.id}`;
-      postLink.textContent = post.title || "Untitled Post"; // Display post title or fallback
+      postLink.className = "post-link"; // Add a class for styling if needed
+
+      // Create post image
+      const postImage = document.createElement("img");
+      postImage.src = post.media?.url || 'http://127.0.0.1:5500/assets/default-image.jpg';
+      postImage.alt = post.media?.alt || 'Post Image';
+      postImage.className = "post-image"; // Add a class for styling if needed
+
+      // Create post title
+      const postTitle = document.createElement("h2");
+      postTitle.textContent = post.title || "Untitled Post";
+
+      // Create post excerpt
+      const postExcerpt = document.createElement("p");
+      postExcerpt.textContent = post.body ? `${post.body.substring(0, 100)}...` : 'No content available...';
 
       // Create Edit/Manage button
       const manageButton = document.createElement("button");
       manageButton.className = "manage-button";
       manageButton.textContent = "Edit/Manage";
       manageButton.style.display = "none"; // Initially hidden, shown by initializeManageButton
+
+      // Append image, title, excerpt, and manage button to the link
+      postLink.appendChild(postImage);
+      postLink.appendChild(postTitle);
+      postLink.appendChild(postExcerpt);
 
       // Append link and manage button to the card
       postCard.appendChild(postLink);
@@ -79,17 +98,5 @@ async function loadPosts() { // Corrected function name to reflect its purpose
     postContainer.innerHTML = '<p>Failed to load posts. Please try again later.</p>';
   }
 }
-
-// JavaScript for clickable blog posts
-document.addEventListener("DOMContentLoaded", function () {
-  const blogPosts = document.querySelectorAll('.blog-post');
-
-  blogPosts.forEach(post => {
-    post.addEventListener('click', () => {
-      const postId = post.getAttribute('data-post-id');
-      window.location.href = `/post/index.html?id=${postId}`;
-    });
-  });
-});
 
 
