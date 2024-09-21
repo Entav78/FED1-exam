@@ -8,6 +8,7 @@
 body {
   min-height: 100vh;
   font-family: 'Times New Roman', Times, serif;
+  background-color: rgb(0, 0, 0);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -34,20 +35,44 @@ h1 {
 }
 
 nav {
+  min-height: 30vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-image: url(/assets/default-image.jpg);
+  /*background-color: rgba(212, 175, 55, 1);*/
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(255, 255, 255);
   position: relative;
 }
 
 .coding2go-link {
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
   font-size: 18px;
   margin-right: auto;
+}
+
+.ksa-logo {
+  height: 12vh;
+  /* Adjust height to suit your design */
+  width: auto;
+  /* Maintains the logo's aspect ratio */
+  object-fit: contain;
+  /* Ensures the logo is not cropped */
+  margin-right: 2vw;
+  /* Optional: Adds space between the logo and other elements */
+}
+
+/* Optional: Adjust hover effects for the logo */
+.coding2go-link:hover .ksa-logo {
+  opacity: 0.8;
+  /* Slight transparency effect on hover */
+  transition: opacity 0.3s ease;
+  /* Smooth transition effect */
 }
 
 /* Main navigation styling */
@@ -65,12 +90,13 @@ nav {
 
 .main-nav a {
   text-decoration: none;
-  color: black;
+  color: rgb(0, 0, 0);
   padding: 10px 15px;
 }
 
 .main-nav a:hover {
-  background-color: #f0f0f0;
+  background-color: rgb(0, 0, 0);
+  color: rgba(212, 175, 55, 1);
   border-radius: 4px;
 }
 
