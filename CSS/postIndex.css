@@ -1,5 +1,9 @@
 @import url('/CSS/header.css');
 
+body {
+  background-color: white;
+}
+
 #postContainer {
   border: 2px solid red;
   padding: 10px;

@@ -1,7 +1,12 @@
 @import url('/CSS/header.css');
 
+body {
+  background-color: white;
+}
+
 form {
   display: flex;
+  padding-top: 15%;
   flex-direction: column;
   gap: 15px;
   max-width: 300px;

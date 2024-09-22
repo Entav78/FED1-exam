@@ -1,5 +1,10 @@
 @import url('/CSS/header.css');
 
+body {
+  background-color: white;
+  /*ajust later*/
+}
+
 .content-editor {
   border: 1px solid #ccc;
   padding: 10px;

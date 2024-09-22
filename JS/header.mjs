@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const managePostLink1 = document.getElementById('managePostLink1');
   const managePostLink2 = document.getElementById('managePostLink2');
   const adminLoginLinks = document.querySelectorAll("#adminLoginLink");
-  const coding2goLink = document.querySelector('.coding2go-link');
+  const ksaLink = document.querySelector('.ksa-link');
 
   function updateLinkVisibility() {
     const isLoggedIn = !!localStorage.getItem("accessToken");
@@ -122,192 +122,16 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Page loaded. Checking link visibility.");
   });
 
-  // Add an event listener to the "Coding2go" link to ensure it redirects properly
-  if (coding2goLink) {
-    coding2goLink.addEventListener('click', function (event) {
-      console.log(`Clicked on Coding2go link: ${coding2goLink.href}`);
-      if (coding2goLink.getAttribute('href') !== '#') {
-        window.location.href = coding2goLink.getAttribute('href');
+  // Add an event listener to the "ksa" link to ensure it redirects properly
+  if (ksaLink) {
+    ksaLink.addEventListener('click', function (event) {
+      console.log(`Clicked on ksa link: ${ksaLink.href}`);
+      if (ksaLink.getAttribute('href') !== '#') {
+        window.location.href = ksaLink.getAttribute('href');
       } else {
         event.preventDefault();
-        console.log("Prevented default action on Coding2go link with href='#'");
+        console.log("Prevented default action on ksa link with href='#'");
       }
     });
   }
-}); // Closing the DOMContentLoaded event listener
- // <-- Closing parenthesis for DOMContentLoaded
-
-
-
-
-
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-  const sidebar = document.querySelector('.sidebar');
-  const sidebarLinks = sidebar ? sidebar.querySelectorAll('a') : [];
-  const closeBtn = document.querySelector('.close-icon'); // Ensure this targets only the close button
-  const menuBtn = document.querySelector('.hamburger-menu');
-  const managePostLink1 = document.getElementById('managePostLink1');
-  const managePostLink2 = document.getElementById('managePostLink2');
-  const adminLoginLinks = document.querySelectorAll("#adminLoginLink");
-  const coding2goLink = document.querySelector('.coding2go-link'); // Targeting the "Coding2go" link
-
-  // Function to update the visibility of "Manage Post" links and admin login button based on login status
-  function updateLinkVisibility() {
-    const isLoggedIn = !!localStorage.getItem("accessToken");
-    const screenWidth = window.innerWidth;
-
-    if (isLoggedIn) {
-      if (screenWidth > 800) {
-        managePostLink1.style.display = 'block';
-        managePostLink2.style.display = 'none';
-      } else {
-        managePostLink1.style.display = 'none';
-        managePostLink2.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
-      }
-
-      adminLoginLinks.forEach((link) => {
-        link.textContent = "Log Out";
-        link.href = "#";
-        link.removeEventListener('click', handleLogout);
-        link.addEventListener('click', handleLogout);
-      });
-    } else {
-      managePostLink1.style.display = 'none';
-      managePostLink2.style.display = 'none';
-      adminLoginLinks.forEach((link) => {
-        link.textContent = "Admin Login";
-        link.href = "/account/login.html";
-        link.removeEventListener('click', handleLogout);
-      });
-    }
-  }
-
-  // Handle user logout
-  function handleLogout(event) {
-    event.preventDefault();
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userName");
-
-    if (window.location.pathname === "/post/edit.html") {
-      window.location.href = "/index.html";
-    } else {
-      window.location.reload();
-    }
-  }
-
-  // Sidebar toggle behavior and close button functionality
-  if (sidebar) {
-    sidebar.classList.remove('active');
-
-    if (closeBtn) {
-      closeBtn.addEventListener("click", function () {
-        sidebar.classList.remove('active');
-        updateLinkVisibility();
-        menuBtn.style.display = 'block';
-        console.log("Close button clicked, sidebar closed.");
-      });
-    }
-
-    if (menuBtn) {
-      menuBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        sidebar.classList.toggle('active');
-        updateLinkVisibility();
-        menuBtn.style.display = sidebar.classList.contains('active') ? 'none' : 'block';
-      });
-    }
-
-    // Handle link clicks within the sidebar
-    sidebarLinks.forEach(link => {
-      link.addEventListener('click', function (event) {
-        console.log(`Clicked on link: ${link.href}`);
-
-        // Prevent default only for the close button or empty links
-        if (link.href === "#" || link === closeBtn.querySelector('a')) {
-          event.preventDefault();
-          console.log("Close button clicked, preventing default action.");
-        } else {
-          // Close the sidebar for other links and proceed with navigation
-          sidebar.classList.remove('active');
-          updateLinkVisibility();
-        }
-      });
-    });
-  }
-
-  // Handle the "Coding2go" link click event to ensure proper navigation
-  if (coding2goLink) {
-    coding2goLink.addEventListener('click', function (event) {
-      console.log(`Clicked on Coding2go link: ${coding2goLink.href}`);
-      if (coding2goLink.getAttribute('href') !== '#') {
-        window.location.href = coding2goLink.getAttribute('href');
-      }
-    });
-  }
-
-  // Update visibility on window resize
-  window.addEventListener("resize", function () {
-    updateLinkVisibility();
-
-    if (window.innerWidth > 800) {
-      menuBtn.style.display = 'none';
-      sidebar.classList.remove('active');
-    } else {
-      menuBtn.style.display = 'block';
-    }
-  });
-
-  // Listen for changes to the accessToken to update the navigation state
-  window.addEventListener('storage', function () {
-    updateLinkVisibility();
-  });
-
-  // Ensure visibility is correctly managed upon page load and interaction
-  window.addEventListener('load', function () {
-    updateLinkVisibility();
-  });
-});
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}); 

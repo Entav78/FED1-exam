@@ -49,11 +49,12 @@ nav {
   position: relative;
 }
 
-.coding2go-link {
+.ksa-link {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 18px;
-  margin-right: auto;
+  /*margin-right: auto;*/
+  margin-left: 4vh;
 }
 
 .ksa-logo {
@@ -68,7 +69,7 @@ nav {
 }
 
 /* Optional: Adjust hover effects for the logo */
-.coding2go-link:hover .ksa-logo {
+.ksa-link:hover .ksa-logo {
   opacity: 0.8;
   /* Slight transparency effect on hover */
   transition: opacity 0.3s ease;
@@ -219,6 +220,44 @@ nav {
   z-index: 10;
   /* Adjust to ensure proper stacking context */
 }
+
+.footer {
+  min-height: 30vh;
+  background-image: url('/assets/footer.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh;
+  position: relative;
+  color: white;
+}
+
+.footer-content {
+  display: flex;
+  gap: 4vh;
+}
+
+.social-icon {
+  width: 5vh;
+  height: 5vh;
+  object-fit: contain;
+  filter: invert(1);
+  transition: transform 0.3s ease;
+}
+
+.instagram-icon {
+  filter: invert(1) brightness(150%) contrast(100%);
+  object-fit: contain;
+  object-position: center;
+  width: 5.5vh;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
 
 /* Large screens */
 @media (min-width: 801px) {
