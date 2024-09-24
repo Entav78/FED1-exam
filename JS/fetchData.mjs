@@ -33,4 +33,3 @@ export async function fetchData(url, method = 'GET', body = null, token = null) 
   }
 }
 
-/

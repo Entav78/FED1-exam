@@ -1,9 +1,6 @@
 @import url('/CSS/header.css');
 
 body {
-  /*background-color: #f4f4f4;*/
-
-  /*color: #333;*/
   color: rgba(212, 175, 55, 1);
   font-family: 'Arial', sans-serif;
 }

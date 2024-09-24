@@ -4,6 +4,13 @@ body {
   background-color: #020202;
 }
 
+main {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .h1-container {
   padding: 2vh 0;
 }
