@@ -1,9 +1,8 @@
 // postActions.mjs
 
 import { getPostsEndpoint } from "../endpoints.mjs";
-import { fetchData } from "../fetchData.mjs"; // Assuming fetchData is a utility function for API requests
+import { fetchData } from "../fetchData.mjs"; 
 
-// 1. Create a new post
 export async function createPost(post) {
   const postsEndpoint = getPostsEndpoint();
   if (!postsEndpoint) {
@@ -26,9 +25,11 @@ export async function createPost(post) {
   }
 }
 
-// Load existing post data for editing
+// Updated loadPostData function with enhanced checks and date corrections
+// Updated loadPostData function with nested response handling
 export async function loadPostData(postId) {
-  const postsEndpoint = getPostsEndpoint(); // Ensure this fetches the correct endpoint for posts
+  const postsEndpoint = getPostsEndpoint();
+
   if (!postsEndpoint) {
     console.error("Posts endpoint could not be determined.");
     document.getElementById("message").textContent = "Error: Cannot determine endpoint.";
@@ -36,25 +37,85 @@ export async function loadPostData(postId) {
   }
 
   try {
-    // Fetch the post data using the postId
     const response = await fetchData(`${postsEndpoint}/${postId}`, "GET");
     
-    // Access the correct structure of the response
-    const postData = response.data || response; // Adjust to ensure correct data path
-    console.log("Fetched post data:", postData);
+    // Adjusting to handle potential nested response
+    const postData = response.data ? response.data : response; // Use `response.data` if it exists, otherwise fallback to `response`
+    console.log("Loaded Post Data:", postData);
+
+    // Check if postData itself has further nesting
+    const post = postData.data ? postData.data : postData; // Dig deeper if data is still nested under another `data` property
+
+    // Log the final structure of the post to ensure we're accessing the correct data
+    console.log("Final post object for setting fields:", post);
 
     // Populate form fields with the fetched post data
-    document.getElementById("title").value = postData.title || "Untitled";
-    document.getElementById("author").value = postData.author?.name || postData.author || ""; // Handle potential structures
-    document.getElementById("publicationDate").value = new Date(postData.publicationDate || postData.created).toLocaleDateString();
-    document.getElementById("content").innerHTML = postData.body || "";
-    document.getElementById("imageUrl").value = postData.media?.url || "";
+    const titleField = document.getElementById("title");
+    const authorField = document.getElementById("author");
+    const publicationDateField = document.getElementById("publicationDate");
+    const contentField = document.getElementById("content");
+    const imageUrlField = document.getElementById("imageUrl");
 
+    if (titleField) {
+      titleField.value = post.title || "Untitled";
+      console.log("Title set to:", titleField.value);
+    } else {
+      console.warn("Title field not found.");
+    }
+
+    if (authorField) {
+      authorField.value = post.author?.name || "";
+    } else {
+      console.warn("Author field not found.");
+    }
+
+    if (publicationDateField) {
+      const rawDate = post.publicationDate || post.created;
+      console.log("Raw date value:", rawDate);
+
+      if (rawDate) {
+        const dateObject = new Date(rawDate);
+
+        if (!isNaN(dateObject.getTime())) {
+          publicationDateField.value = dateObject.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          });
+        } else {
+          publicationDateField.value = "Date Not Available";
+          console.warn("Invalid date format:", rawDate);
+        }
+      } else {
+        publicationDateField.value = "Date Not Available";
+        console.warn("Publication date not provided.");
+      }
+    } else {
+      console.warn("Publication date field not found.");
+    }
+
+    if (contentField) {
+      contentField.innerText = post.body || "";
+    } else {
+      console.warn("Content field not found.");
+    }
+
+    if (imageUrlField) {
+      imageUrlField.value = post.media?.url || "";
+    } else {
+      console.warn("Image URL field not found.");
+    }
+
+    console.log("Post data loaded successfully.");
   } catch (error) {
     console.error("Failed to load post data:", error);
     document.getElementById("message").textContent = "Failed to load post. Please try again.";
   }
 }
+
+
+
+
 
 /*
 // 2. Load existing post data for editing
@@ -98,7 +159,7 @@ export async function updatePost(postId, post) {
   const postsEndpoint = getPostsEndpoint();
 
   try {
-    const { response, data } = await fetchData(`${postsEndpoint}/${postId}`, "PUT", post);
+    const { response, data } = await fetchData(`${postsEndpoint}/${username}/${postId}`, "PUT", post);
 
     // Check if the response is successful
     if (response.ok) {

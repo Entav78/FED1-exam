@@ -154,9 +154,11 @@ nav {
 }
 
 .sidebar.active {
+  background-color: rgba(212, 175, 55, 0.2);
   display: flex;
   transform: translateX(0);
 }
+
 
 .sidebar li {
   list-style: none;
@@ -233,6 +235,17 @@ nav {
   transform: scale(1.5);
 }
 
+/*
+#editPostForm,
+#title,
+#author,
+#publicationDate,
+#content,
+#imageUrl,
+.content-editor {
+  border: 2px solid red !important;
+}
+*/
 
 /* Large screens */
 @media (min-width: 801px) {
