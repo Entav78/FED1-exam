@@ -12,7 +12,9 @@ export async function createPost(post) {
 
   try {
     const responseData = await fetchData(postsEndpoint, "POST", post);
-    const postId = responseData.data.id;
+    console.log("Full Response Data:", responseData);
+
+    const postId = responseData.data?.data?.id || responseData.data?.id;
     if (!postId) {
       throw new Error("Post ID not returned from server.");
     }
@@ -25,8 +27,6 @@ export async function createPost(post) {
   }
 }
 
-// Updated loadPostData function with enhanced checks and date corrections
-// Updated loadPostData function with nested response handling
 export async function loadPostData(postId) {
   const postsEndpoint = getPostsEndpoint();
 
@@ -39,14 +39,11 @@ export async function loadPostData(postId) {
   try {
     const response = await fetchData(`${postsEndpoint}/${postId}`, "GET");
     
-    // Adjusting to handle potential nested response
-    const postData = response.data ? response.data : response; // Use `response.data` if it exists, otherwise fallback to `response`
+    const postData = response.data ? response.data : response; 
     console.log("Loaded Post Data:", postData);
 
-    // Check if postData itself has further nesting
-    const post = postData.data ? postData.data : postData; // Dig deeper if data is still nested under another `data` property
+    const post = postData.data ? postData.data : postData; 
 
-    // Log the final structure of the post to ensure we're accessing the correct data
     console.log("Final post object for setting fields:", post);
 
     // Populate form fields with the fetched post data

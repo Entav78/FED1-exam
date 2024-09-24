@@ -1,15 +1,16 @@
 @import url('/CSS/header.css');
 
 body {
-  background-color: #f4f4f4;
+  /*background-color: #f4f4f4;*/
 
-  color: #333;
-
+  /*color: #333;*/
+  color: rgba(212, 175, 55, 1);
   font-family: 'Arial', sans-serif;
 }
 
 .content-editor {
-  border: 1px solid #ccc;
+  border: 1px solid rgba(212, 175, 55, 1);
+  /* Gold border for a sleek look */
   padding: 2vh;
   height: auto;
   min-height: 20vh;
@@ -18,7 +19,10 @@ body {
   line-height: 1.5;
   cursor: text;
   border-radius: 0.5vh;
-  background-color: #fff;
+  background-color: white;
+  /* White background for readability */
+  color: black;
+  /* Text color inside the editor */
 }
 
 /*
@@ -53,36 +57,36 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
 }
 
 
 .modal-content {
-  background-color: #fff;
+  background-color: white;
   margin: 20vh auto;
   padding: 2vh;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(212, 175, 55, 1);
   width: 90vw;
   max-width: 40vh;
   border-radius: 1vh;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 
 .close-button {
-  color: #555;
+  color: rgba(212, 175, 55, 1);
   float: right;
   font-size: 2.5vh;
   font-weight: bold;
   cursor: pointer;
 }
 
-
+.cancel-button,
 .confirm-button {
-  background-color: #d9534f;
-  color: white;
+  background-color: rgba(212, 175, 55, 1);
+  color: black;
   padding: 1vh 2vw;
   margin: 1vh;
   border: none;
@@ -92,29 +96,11 @@ body {
   transition: background-color 0.3s ease;
 }
 
-
-.cancel-button {
-  background-color: #5bc0de;
-  color: white;
-  padding: 1vh 2vw;
-  margin: 1vh;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.5vh;
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease;
-}
-
-
+.cancel-button:hover,
 .confirm-button:hover {
-  background-color: #c9302c;
+  background-color: white;
+  color: black;
 }
-
-
-.cancel-button:hover {
-  background-color: #31b0d5;
-}
-
 
 form div {
   margin-bottom: 2vh;
@@ -124,16 +110,18 @@ form div {
 input[type="text"] {
   width: 100%;
   padding: 1vh;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(212, 175, 55, 1);
   border-radius: 0.5vh;
+  background-color: #333;
+  color: white;
   box-sizing: border-box;
   margin-top: 0.5vh;
 }
 
 
 #actionButton {
-  background-color: #007bff;
-  color: white;
+  background-color: rgba(212, 175, 55, 1);
+  color: black;
   padding: 1vh 2vw;
   border: none;
   border-radius: 0.5vh;
@@ -144,7 +132,8 @@ input[type="text"] {
 
 
 #actionButton:hover {
-  background-color: #0056b3;
+  background-color: white;
+  color: black;
 }
 
 
@@ -153,16 +142,16 @@ input[type="text"] {
   justify-content: space-between;
   align-items: center;
   padding: 1vh;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(212, 175, 55, 1);
 }
 
 
 .editPostButton,
 .deletePostButton {
-  background-color: #f0ad4e;
-  color: white;
+  background-color: black;
+  color: rgba(212, 175, 55, 1);
   padding: 0.8vh 1.5vw;
-  border: none;
+  border: 1px solid gold;
   cursor: pointer;
   border-radius: 0.5vh;
   font-size: 1rem;
@@ -170,94 +159,11 @@ input[type="text"] {
 }
 
 .editPostButton:hover {
-  background-color: #ec971f;
+  background-color: white;
+  color: black;
 }
 
 .deletePostButton:hover {
-  background-color: #d9534f;
-}
-
-
-/*
-@import url('/CSS/header.css');
-
-body {
   background-color: white;
-  //ajust later//
+  color: black;
 }
-
-.content-editor {
-  border: 1px solid #ccc;
-  padding: 10px;
-  min-height: 200px;
-  max-height: 400px;
-  overflow-y: auto;
-  line-height: 1.5;
-  cursor: text;
-}
-
-.content-editor img {
-  max-width: 80%;
-  margin: 10px 0;
-  display: block;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 400px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.close-button {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.confirm-button {
-  background-color: #d9534f;
-  color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.cancel-button {
-  background-color: #5bc0de;
-  color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.confirm-button:hover {
-  background-color: #c9302c;
-}
-
-.cancel-button:hover {
-  background-color: #31b0d5;
-}
-*/
