@@ -59,9 +59,14 @@ async function loadPosts() { // Corrected function name to reflect its purpose
 
       // Create post image
       const postImage = document.createElement("img");
-      postImage.src = post.media?.url || 'http://127.0.0.1:5500/assets/default-image.jpg';
-      postImage.alt = post.media?.alt || 'Post Image';
-      postImage.className = "post-image"; // Add a class for styling if needed
+  if (post.media && post.media.url) {
+    postImage.src = post.media.url; // Correct: Dynamically setting the URL from post data
+    postImage.alt = post.media.alt || post.title || 'Post Image'; // Fallback for alt text
+    postImage.className = "post-image"; // Ensure proper styling
+  } else {
+    postImage.style.display = "none"; // Hide image if URL is not provided
+    console.warn("No image URL provided for this post.");
+  }
 
       // Create post title
       const postTitle = document.createElement("h2");

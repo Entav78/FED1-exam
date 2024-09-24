@@ -16,22 +16,16 @@ body {
 
 .h1-container {
   display: flex;
-  /* Use flexbox just for the container of the h1 */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
   width: 100%;
-  /* Ensure it takes the full width */
   padding: 20px 0;
-  /* Optional: add some vertical spacing */
 }
 
 h1 {
+  color: rgba(212, 175, 55, 1);
   margin: 0;
-  /* Reset any default margin */
   text-align: center;
-  /* Center text inside h1 */
 }
 
 nav {
@@ -40,7 +34,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   background-image: url(/assets/default-image.jpg);
-  /*background-color: rgba(212, 175, 55, 1);*/
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -53,30 +46,21 @@ nav {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 18px;
-  /*margin-right: auto;*/
   margin-left: 4vh;
 }
 
 .ksa-logo {
   height: 12vh;
-  /* Adjust height to suit your design */
   width: auto;
-  /* Maintains the logo's aspect ratio */
   object-fit: contain;
-  /* Ensures the logo is not cropped */
   margin-right: 2vw;
-  /* Optional: Adds space between the logo and other elements */
 }
 
-/* Optional: Adjust hover effects for the logo */
 .ksa-link:hover .ksa-logo {
   opacity: 0.8;
-  /* Slight transparency effect on hover */
   transition: opacity 0.3s ease;
-  /* Smooth transition effect */
 }
 
-/* Main navigation styling */
 .main-nav {
   list-style: none;
   display: flex;
@@ -92,7 +76,9 @@ nav {
 .main-nav a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  padding: 10px 15px;
+  padding: 1vh 2vw;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .main-nav a:hover {
@@ -101,16 +87,17 @@ nav {
   border-radius: 4px;
 }
 
-/* Hamburger Menu */
+/* Adjusted Hamburger Menu */
 .hamburger-menu {
   display: none;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 4vw;
   cursor: pointer;
   z-index: 500;
-  width: 30px;
-  height: 30px;
+  width: 6vh;
+  height: 6vh;
 }
 
 .hamburger-icon {
@@ -118,6 +105,7 @@ nav {
   height: 100%;
   fill: #000;
 }
+
 
 /* Close Icon */
 .close-icon {
@@ -163,20 +151,17 @@ nav {
   flex-direction: column;
   padding-top: 50px;
   transform: translateX(100%);
-  /* Add for debugging visibility */
 }
 
 .sidebar.active {
   display: flex;
   transform: translateX(0);
-  /* Add for debugging visibility */
 }
 
 .sidebar li {
   list-style: none;
   margin: 10px 0;
   padding-left: 15px;
-  /* Add padding to ensure text is not too close to the sidebar edge */
 }
 
 .sidebar a {
@@ -186,10 +171,8 @@ nav {
   display: block;
   width: 100%;
   z-index: 10;
-  /* Ensure links are above the close button if necessary */
 }
 
-/* Hide the hamburger when the sidebar is active */
 .sidebar.active~.hamburger-menu {
   display: none;
 }
@@ -201,29 +184,21 @@ nav {
   z-index: 1001;
   display: block;
   background-color: transparent;
-  /* Transparent background to avoid covering links */
   padding: 5px;
-  /* Adjust padding to shrink its clickable area */
   width: 24px;
-  /* Limit the size */
   height: 24px;
-  /* Limit the size */
   border: 1px solid green;
-  /* Keep for debugging, adjust/remove when done */
   cursor: pointer;
-  /* Make sure it's still clickable */
 }
 
-/* Add any necessary z-index adjustments */
 .sidebar a,
 .sidebar .close-icon {
   z-index: 10;
-  /* Adjust to ensure proper stacking context */
 }
 
 .footer {
   min-height: 30vh;
-  background-image: url('/assets/footer.jpg');
+  background-image: url('/assets/footer2.jpg');
   background-size: cover;
   background-position: center bottom;
   display: flex;
@@ -243,7 +218,7 @@ nav {
   width: 5vh;
   height: 5vh;
   object-fit: contain;
-  filter: invert(1);
+  /*filter: invert(1);*/
   transition: transform 0.3s ease;
 }
 
@@ -255,7 +230,7 @@ nav {
 }
 
 .social-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 

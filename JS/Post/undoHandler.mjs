@@ -17,6 +17,13 @@ export async function handleDelete(postId) {
   undoTimer = setTimeout(async () => {
     await permanentlyDeletePost(postId);
   }, 10000); 
+
+ // Clear any existing timers before starting a new one
+ clearTimeout(undoTimer);
+
+ undoTimer = setTimeout(async () => {
+   await permanentlyDeletePost(postId);
+ }, 10000); 
 }
 
 // Function to handle permanent deletion
@@ -50,10 +57,16 @@ function handleErrorInDelete() {
 
 // Function to handle undo button click
 export function handleUndoButton() {
-  document.getElementById('undo-button').addEventListener('click', () => {
-    clearTimeout(undoTimer);
-    deletedPost.style.display = 'block';
-    document.getElementById('undo-container').style.display = 'none';
-    alert('Post restored.');
+  const undoButton = document.getElementById('undo-button');
+  if (!undoButton) {
+    console.warn('Undo button not found.');
+    return;
+  }
+
+  undoButton.addEventListener('click', () => {
+    clearTimeout(undoTimer); // Stop the timer
+    deletedPost.style.display = 'block'; // Show the deleted post
+    document.getElementById('undo-container').style.display = 'none'; // Hide the undo container
+    alert('Post restored.'); // Notify the user
   });
 }

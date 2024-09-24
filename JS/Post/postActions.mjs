@@ -26,6 +26,37 @@ export async function createPost(post) {
   }
 }
 
+// Load existing post data for editing
+export async function loadPostData(postId) {
+  const postsEndpoint = getPostsEndpoint(); // Ensure this fetches the correct endpoint for posts
+  if (!postsEndpoint) {
+    console.error("Posts endpoint could not be determined.");
+    document.getElementById("message").textContent = "Error: Cannot determine endpoint.";
+    return;
+  }
+
+  try {
+    // Fetch the post data using the postId
+    const response = await fetchData(`${postsEndpoint}/${postId}`, "GET");
+    
+    // Access the correct structure of the response
+    const postData = response.data || response; // Adjust to ensure correct data path
+    console.log("Fetched post data:", postData);
+
+    // Populate form fields with the fetched post data
+    document.getElementById("title").value = postData.title || "Untitled";
+    document.getElementById("author").value = postData.author?.name || postData.author || ""; // Handle potential structures
+    document.getElementById("publicationDate").value = new Date(postData.publicationDate || postData.created).toLocaleDateString();
+    document.getElementById("content").innerHTML = postData.body || "";
+    document.getElementById("imageUrl").value = postData.media?.url || "";
+
+  } catch (error) {
+    console.error("Failed to load post data:", error);
+    document.getElementById("message").textContent = "Failed to load post. Please try again.";
+  }
+}
+
+/*
 // 2. Load existing post data for editing
 export async function loadPostData(postId) {
   const postsEndpoint = getPostsEndpoint();
@@ -61,21 +92,50 @@ export async function loadPostData(postId) {
     document.getElementById("message").textContent = "Failed to load post. Please try again.";
   }
 }
-
-// 3. Update an existing post
+*/
+// Updated updatePost function in postActions.mjs
 export async function updatePost(postId, post) {
   const postsEndpoint = getPostsEndpoint();
+
   try {
-    const response = await fetchData(`${postsEndpoint}/${postId}`, "PUT", post);
-    if (!response.ok) {
-      throw new Error("Failed to update post.");
+    const { response, data } = await fetchData(`${postsEndpoint}/${postId}`, "PUT", post);
+
+    // Check if the response is successful
+    if (response.ok) {
+      alert("Post updated successfully!"); // Show success message
+      window.location.href = `/post/index.html?id=${postId}`; // Redirect to view the updated post
+    } else {
+      // Handle unexpected status codes as errors
+      console.error("Error response:", data);
+      alert("Failed to update the post. Please try again.");
     }
-    alert("Post updated successfully!");
-    window.location.href = "/post/index.html";
   } catch (error) {
     console.error("Failed to update post:", error);
+    alert("Failed to update the post due to a network error. Please try again.");
   }
 }
+
+/*
+// Updated updatePost function in postActions.mjs
+export async function updatePost(postId, post) {
+  const postsEndpoint = getPostsEndpoint();
+
+  try {
+    const response = await fetchData(`${postsEndpoint}/${postId}`, "PUT", post);
+
+    // Check if the response is successful
+    if (response.ok || response.status === 200) {
+      alert("Post updated successfully!"); // Show success message
+      window.location.href = `/post/index.html?id=${postId}`; // Redirect to view the updated post
+    } else {
+      throw new Error("Failed to update post.");
+    }
+  } catch (error) {
+    console.error("Failed to update post:", error);
+    alert("Failed to update the post. Please try again.");
+  }
+}
+*/
 
 // 4. Delete a post
 export async function deletePost(postId) {

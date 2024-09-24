@@ -30,7 +30,6 @@
 .post-image {
   width: 100%;
   height: 20vh;
-  /* Adjust height based on your preference */
   object-fit: cover;
   border-bottom: 0.1vh solid #ddd;
 }

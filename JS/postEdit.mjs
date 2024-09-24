@@ -1,46 +1,63 @@
+
 import './header.mjs';
-import { createPost, updatePost, loadPostData, deletePost } from './Post/postActions.mjs'; // Ensure deletePost is imported
-import { getUrlParameter } from './Post/utils.mjs'; // Utility function to get query parameters
+import { createPost, updatePost, loadPostData, deletePost } from './Post/postActions.mjs';
+import { getUrlParameter } from './Post/utils.mjs';
 
 document.addEventListener("DOMContentLoaded", function () {
   const editPostForm = document.getElementById("editPostForm");
   const actionButton = document.getElementById("actionButton");
   const deletePostButton = document.getElementById("deletePostButton");
-  const imageUrlInput = document.getElementById("imageUrl");
-  const contentField = document.getElementById("content");
 
   // Get the post ID from the URL
   const postId = getUrlParameter("id");
-
+  console.log("Post ID retrieved:", postId); 
   // Load existing post data if postId is present
-  if (postId) {
+ /* if (postId) {
     if (actionButton) actionButton.textContent = "Update Post";
-    loadPostData(postId); // Load post data into form fields
+    loadPostData(postId)
+      .catch(error => {
+        console.error("Failed to load post data:", error);
+        alert("Failed to load post data. Please try again later.");
+      });
+
+    if (deletePostButton) deletePostButton.style.display = "block"; // Show delete button if editing
   } else {
     if (actionButton) actionButton.textContent = "Publish Post";
   }
+*/
+if (postId) {
+  if (actionButton) actionButton.textContent = "Update Post";
+  loadPostData(postId)
+    .then(() => {
+      console.log("Post data loaded successfully.");
+    })
+    .catch(error => {
+      console.error("Failed to load post data:", error);
+      alert("Failed to load post data. Please try again later.");
+    });
+
+  if (deletePostButton) deletePostButton.style.display = "block"; // Show delete button if editing
+} else {
+  if (actionButton) actionButton.textContent = "Publish Post";
+}
 
   // Set up event listener for form submission (create or update post)
   if (editPostForm) {
     editPostForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      // Collect input data
+      const imageUrlInput = document.getElementById("imageUrl");
+      const contentField = document.getElementById("content");
+
       const title = document.getElementById("title")?.value || '';
       const content = contentField ? contentField.innerHTML : '';
       const imageUrl = imageUrlInput?.value || '';
       const userName = localStorage.getItem("userName");
 
-      // Check if required fields are correctly populated
-      if (!title) console.warn('Title is empty or not found.');
-      if (!content) console.warn('Content is empty or content field not found.');
-      if (!imageUrl) console.warn('Image URL is empty or imageUrlInput not found.');
-
-      // Prepare the post object
       const post = {
         title: title,
-        author: userName, // Use the logged-in user's name
-        publicationDate: postId ? undefined : new Date().toISOString(), // Set only during creation
+        author: userName,
+        publicationDate: postId ? undefined : new Date().toISOString(),
         body: content,
         media: {
           url: imageUrl,
@@ -48,15 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       };
 
-      console.log('Submitting Post Object:', post); // Log the post object for debugging
-
-      // Decide whether to update or create a post based on the presence of postId
-      if (postId) {
-        post.updatedDate = new Date().toISOString(); // Set updatedDate during editing
-        delete post.publicationDate; // Remove publicationDate to avoid modifying it
-        await updatePost(postId, post);
-      } else {
-        await createPost(post);
+      try {
+        if (postId) {
+          post.updatedDate = new Date().toISOString();
+          delete post.publicationDate;
+          await updatePost(postId, post);
+        } else {
+          await createPost(post);
+        }
+      } catch (error) {
+        console.error("Failed to submit the post:", error);
+        alert("Failed to submit the post. Please try again.");
       }
     });
   } else {
@@ -68,32 +87,47 @@ document.addEventListener("DOMContentLoaded", function () {
     deletePostButton.addEventListener("click", function () {
       if (!postId) {
         console.warn('Post ID not found; cannot delete post.');
+        alert('Post ID not found; cannot delete post.');
         return;
       }
-      deleteModal.style.display = "block"; // Show the modal
+
+      const deleteModal = document.getElementById('deleteModal');
+      deleteModal.style.display = "block";
     });
   }
 
   // Close modal actions
-  closeModal.addEventListener("click", () => (deleteModal.style.display = "none"));
-  cancelDelete.addEventListener("click", () => (deleteModal.style.display = "none"));
+  const closeModal = document.getElementById('closeModal');
+  const cancelDelete = document.getElementById('cancelDelete');
+
+  if (closeModal && cancelDelete) {
+    closeModal.addEventListener("click", () => {
+      document.getElementById('deleteModal').style.display = "none";
+    });
+    cancelDelete.addEventListener("click", () => {
+      document.getElementById('deleteModal').style.display = "none";
+    });
+  }
 
   // Confirm delete action
-  confirmDelete.addEventListener("click", async function () {
-    await deletePost(postId); // Call delete function on confirmation
-  });
+  const confirmDelete = document.getElementById('confirmDelete');
+  if (confirmDelete) {
+    confirmDelete.addEventListener("click", async function () {
+      try {
+        await deletePost(postId);
+      } catch (error) {
+        console.error("Failed to delete the post:", error);
+        alert("Failed to delete the post. Please try again.");
+      }
+    });
+  }
 });
-
-// Utility function to load post data when the page loads
-async function handleEdit(postId) {
-  console.log(`Editing post with ID: ${postId}`);
-  // Add any additional edit-specific handling here if needed
-}
 
 // Function to insert HTML at the cursor position in the contenteditable div
 function insertAtCursor(editableDiv, html) {
   if (!editableDiv) {
     console.warn('Editable div not found or not provided.');
+    alert('Editable div not found or not provided.');
     return;
   }
 
@@ -110,6 +144,8 @@ function insertAtCursor(editableDiv, html) {
   selection.removeAllRanges();
   selection.addRange(range);
 }
+
+
 
 
 

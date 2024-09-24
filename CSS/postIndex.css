@@ -1,25 +1,72 @@
 @import url('/CSS/header.css');
 
 body {
-  background-color: white;
+  background-color: #020202;
+}
+
+.h1-container {
+  padding: 2vh 0;
 }
 
 #postContainer {
-  border: 2px solid red;
-  padding: 10px;
-  min-height: 200px;
+  padding: 2vh;
   background-color: #f9f9f9;
+  border: 0.3vh solid #ddd;
+  border-radius: 0.5vh;
+  margin: 2vh auto;
+  max-width: 80vw;
+  box-shadow: 0 0.5vh 1vh rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.blog-post {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.blog-post h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.blog-post img {
+  width: 100%;
+  max-height: 40vh;
+  object-fit: cover;
+  border-radius: 0.5vh;
+  box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.1);
 }
 
 .copy-link-button {
+  position: absolute;
+  top: 1vh;
+  right: 1vh;
   border: none;
   background: none;
   cursor: pointer;
   padding: 0;
+  z-index: 10;
 }
 
 .copy-link-icon {
-  width: 24px;
-  height: 24px;
+  width: 3vh;
+  height: 3vh;
+}
+
+.manage-button {
   display: block;
+  margin-top: 2vh;
+  padding: 1vh 2vw;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.5vh;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.manage-button:hover {
+  background-color: #0056b3;
 }
