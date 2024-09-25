@@ -38,31 +38,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const mediaUrl = post.media?.url || 'http://127.0.0.1:5500/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
     const bodyText = post.body ? post.body.substring(0, 200) : 'No content available...';
-
+  
     const slide = document.createElement('li');
     slide.classList.add('carousel-slide');
-
+  
+    // Create the content wrapper to group title, image, and body
+    const contentWrapper = document.createElement('div');
+    contentWrapper.classList.add('carousel-content'); // Ensure your CSS has styles for this class
+  
     const img = document.createElement('img');
     img.src = mediaUrl;
     img.alt = mediaAlt;
     img.style.width = '100%';
     img.style.height = '20vh';
     img.style.objectFit = 'cover';
-
+  
     img.addEventListener('error', function () {
       img.src = 'http://127.0.0.1:5500/assets/default-image.jpg';
     });
-
+  
     img.addEventListener('click', () => {
       window.location.href = `/post/index.html?id=${post.id}`;
     });
-
+  
     const titleElem = document.createElement('h3');
     titleElem.textContent = title;
-
+  
     const bodyElem = document.createElement('p');
     bodyElem.textContent = `${bodyText}...`;
-
+  
     const readMoreButton = document.createElement('button');
     readMoreButton.classList.add('read-more');
     readMoreButton.textContent = 'Read More';
@@ -70,25 +74,31 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(`Read More clicked for post ID: ${post.id}`); // Log button click
       window.location.href = `/post/index.html?id=${post.id}`;
     });
-
-    slide.appendChild(titleElem);
-    slide.appendChild(img);
-    slide.appendChild(bodyElem);
+  
+    // Append the title, image, and body text to the content wrapper
+    contentWrapper.appendChild(titleElem);
+    contentWrapper.appendChild(img);
+    contentWrapper.appendChild(bodyElem);
+  
+    // Append the content wrapper and the read-more button to the slide
+    slide.appendChild(contentWrapper);
     slide.appendChild(readMoreButton);
+  
     console.log(`Added Read More button to slide for post ID: ${post.id}`); // Log button addition
     track.appendChild(slide);
-
+  
     const dot = document.createElement('button');
     dot.classList.add('carousel-dot');
     dotsNav.appendChild(dot);
     dotArray.push(dot);
-
+  
     dot.addEventListener('click', () => {
       goToSlide(index);
       updateActiveDot(index);
       currentIndex = index;
     });
   }
+  
 
   function createCloneSlides() {
     console.log('Cloning first and last slides for seamless looping.');
