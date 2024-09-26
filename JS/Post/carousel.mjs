@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     readMoreButton.textContent = 'Read More';
     readMoreButton.addEventListener('click', () => {
       console.log(`Read More clicked for post ID: ${post.id}`); // Log button click
-      window.location.href = `/post/index.html?id=${post.id}`;
+      window.location.href = `../post/index.html?id=${post.id}`;
     });
   
     // Append the title, image, and body text to the content wrapper
