@@ -1,4 +1,4 @@
-import './Account/adminLoginLink.mjs';
+import '../Account/adminLoginLink.mjs';
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log('DOMContentLoaded event triggered in header.mjs');
