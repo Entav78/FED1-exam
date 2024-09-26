@@ -17,24 +17,8 @@ body {
   cursor: text;
   border-radius: 0.5vh;
   background-color: white;
-  /* White background for readability */
   color: black;
-  /* Text color inside the editor */
 }
-
-/*
-.content-editor {
-  border: 1px solid #ccc;
-  padding: 2vh;
-  min-height: 20vh;
-  max-height: 40vh;
-  overflow-y: auto;
-  line-height: 1.5;
-  cursor: text;
-  border-radius: 0.5vh;
-  background-color: #fff;
-}
-*/
 
 .content-editor img {
   max-width: 100%;
@@ -99,6 +83,14 @@ body {
   color: black;
 }
 
+form {
+  margin: 2vh auto;
+  padding: 2vh;
+  max-width: 80%;
+  border: 1px solid #ddd;
+  border-radius: 0.5vh;
+}
+
 form div {
   margin-bottom: 2vh;
 }
@@ -109,12 +101,21 @@ input[type="text"] {
   padding: 1vh;
   border: 1px solid rgba(212, 175, 55, 1);
   border-radius: 0.5vh;
-  background-color: #333;
-  color: white;
+  background-color: white;
+  color: black;
   box-sizing: border-box;
   margin-top: 0.5vh;
 }
 
+input.auto-input {
+  background-color: grey;
+  color: #333;
+  border: 1px solid rgba(212, 175, 55, 1);
+  border-radius: 0.5vh;
+  padding: 1vh;
+  box-sizing: border-box;
+  margin-top: 0.5vh;
+}
 
 #actionButton {
   background-color: rgba(212, 175, 55, 1);
@@ -129,8 +130,10 @@ input[type="text"] {
 
 
 #actionButton:hover {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: rgba(212, 175, 55, 1);
+  border: 1px solid rgba(212, 175, 55, 1);
+  border-color: rgba(212, 175, 55, 1);
 }
 
 
@@ -156,11 +159,11 @@ input[type="text"] {
 }
 
 .editPostButton:hover {
-  background-color: white;
+  background-color: rgba(212, 175, 55, 1);
   color: black;
 }
 
 .deletePostButton:hover {
-  background-color: white;
+  background-color: red;
   color: black;
 }

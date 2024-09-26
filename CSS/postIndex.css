@@ -66,8 +66,8 @@ main {
   display: block;
   margin-top: 2vh;
   padding: 1vh 2vw;
-  background-color: #007bff;
-  color: white;
+  background-color: black;
+  color: rgba(212, 175, 55, 1);
   border: none;
   border-radius: 0.5vh;
   cursor: pointer;
@@ -75,5 +75,6 @@ main {
 }
 
 .manage-button:hover {
-  background-color: #0056b3;
+  background-color: rgba(212, 175, 55, 1);
+  color: black;
 }
