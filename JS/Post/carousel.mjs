@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createSlide(post, index) {
     console.log(`Creating slide for post ID: ${post.id}`); // Log the post ID to track slide creation
     const title = post.title || 'No Title Available';
-    const mediaUrl = post.media?.url || 'http://127.0.0.1:5500/assets/default-image.jpg';
+    const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
     const bodyText = post.body ? post.body.substring(0, 200) : 'No content available...';
   
@@ -54,11 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
     img.style.objectFit = 'cover';
   
     img.addEventListener('error', function () {
-      img.src = 'http://127.0.0.1:5500/assets/default-image.jpg';
+      img.src = 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     });
   
     img.addEventListener('click', () => {
-      window.location.href = `../post/index.html?id=${post.id}`;
+      window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
     });
   
     const titleElem = document.createElement('h3');
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     readMoreButton.textContent = 'Read More';
     readMoreButton.addEventListener('click', () => {
       console.log(`Read More clicked for post ID: ${post.id}`);
-      window.location.href = `../post/index.html?id=${post.id}`;
+      window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
     });
   
     contentWrapper.appendChild(titleElem);
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newButton.classList.add('read-more');
       newButton.textContent = 'Read More';
       newButton.addEventListener('click', () => {
-        window.location.href = `../post/index.html?id=${postId}`;
+        window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${postId}`;
       });
       clone.appendChild(newButton);
     }
