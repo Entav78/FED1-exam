@@ -1,19 +1,15 @@
-@import url('/../CSS/Header.css');
-@import url('/../CSS/carousel.css');
+@import url('./../CSS/Header.css');
+@import url('./../CSS/carousel.css');
 
 .post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
-  /* Adjusted min-width to fit more responsively */
   gap: 2vh;
-  /* Space between the cards */
   padding: 2vh;
   max-width: 90vw;
-  /* Adjust max-width to fit the viewport */
   margin: 0 auto;
 }
 
-/* Individual blog post styling */
 .blog-post {
   background-color: #ffffff;
   border: 0.1vh solid #ddd;
