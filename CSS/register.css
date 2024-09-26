@@ -1,4 +1,4 @@
-@import url('/CSS/header.css');
+@import url('header.css');
 
 * {
   margin: 0;
@@ -91,11 +91,11 @@ input::placeholder {
 }
 
 .show-password {
-  background-image: url('/assets/icon/eye-show.svg');
+  background-image: url('./assets/icon/eye-show.svg');
 }
 
 .hide-password {
-  background-image: url('/assets/icon/eye-hide.svg');
+  background-image: url('./assets/icon/eye-hide.svg');
 }
 
 #register-link,
