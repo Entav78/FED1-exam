@@ -44,7 +44,7 @@ body {
 
 
 .modal-content {
-  background-color: white;
+  background-color: black;
   margin: 20vh auto;
   padding: 2vh;
   border: 1px solid rgba(212, 175, 55, 1);
@@ -79,8 +79,9 @@ body {
 
 .cancel-button:hover,
 .confirm-button:hover {
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: rgba(212, 175, 55, 1);
+  border: 1px solid rgba(212, 175, 55, 1);
 }
 
 form {
@@ -117,26 +118,6 @@ input.auto-input {
   margin-top: 0.5vh;
 }
 
-#actionButton {
-  background-color: rgba(212, 175, 55, 1);
-  color: black;
-  padding: 1vh 2vw;
-  border: none;
-  border-radius: 0.5vh;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1vh;
-}
-
-
-#actionButton:hover {
-  background-color: black;
-  color: rgba(212, 175, 55, 1);
-  border: 1px solid rgba(212, 175, 55, 1);
-  border-color: rgba(212, 175, 55, 1);
-}
-
-
 .post-item {
   display: flex;
   justify-content: space-between;
@@ -146,24 +127,34 @@ input.auto-input {
 }
 
 
-.editPostButton,
-.deletePostButton {
-  background-color: black;
-  color: rgba(212, 175, 55, 1);
-  padding: 0.8vh 1.5vw;
-  border: 1px solid gold;
-  cursor: pointer;
-  border-radius: 0.5vh;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+.button-group {
+  display: flex;
+  gap: 1vh;
+  justify-content: space-between;
 }
 
-.editPostButton:hover {
+#actionButton,
+.deletePostButton {
+  flex: 1;
+  padding: 1vh 2vw;
+  border-radius: 0.5vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
   background-color: rgba(212, 175, 55, 1);
   color: black;
+  border: 1px solid rgba(212, 175, 55, 1);
+  cursor: pointer;
 }
 
+
+
 .deletePostButton:hover {
-  background-color: red;
-  color: black;
+  background-color: red !important;
+  color: black !important;
+}
+
+#actionButton:hover {
+  background-color: black;
+  color: rgba(212, 175, 55, 1);
+  border: 1px solid rgba(212, 175, 55, 1);
+  border-color: rgba(212, 175, 55, 1);
 }

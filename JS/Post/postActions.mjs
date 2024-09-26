@@ -141,7 +141,7 @@ export async function updatePost(postId, post) {
 
 export async function deletePost(postId) {
   const userName = localStorage.getItem('userName');
-  const postEndpoint = getPostEndpoint(userName, postId); // Correct usage
+  const postEndpoint = getPostEndpoint(userName, postId); 
 
   if (!postEndpoint) {
     console.error("Post endpoint could not be determined.");
@@ -150,7 +150,7 @@ export async function deletePost(postId) {
   }
 
   try {
-    const { response, data } = await fetchData(postEndpoint, "DELETE"); // Correct fetch URL
+    const { response, data } = await fetchData(postEndpoint, "DELETE"); 
 
     if (!response.ok) {
       console.error("Failed to delete post:", response.status, data);

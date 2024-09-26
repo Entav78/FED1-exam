@@ -8,23 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const actionButton = document.getElementById("actionButton");
   const deletePostButton = document.getElementById("deletePostButton");
 
-  // Get the post ID from the URL
+  
   const postId = getUrlParameter("id");
   console.log("Post ID retrieved:", postId); 
-  // Load existing post data if postId is present
- /* if (postId) {
-    if (actionButton) actionButton.textContent = "Update Post";
-    loadPostData(postId)
-      .catch(error => {
-        console.error("Failed to load post data:", error);
-        alert("Failed to load post data. Please try again later.");
-      });
-
-    if (deletePostButton) deletePostButton.style.display = "block"; // Show delete button if editing
-  } else {
-    if (actionButton) actionButton.textContent = "Publish Post";
-  }
-*/
+ 
 if (postId) {
   if (actionButton) actionButton.textContent = "Update Post";
   loadPostData(postId)
@@ -36,7 +23,7 @@ if (postId) {
       alert("Failed to load post data. Please try again later.");
     });
 
-  if (deletePostButton) deletePostButton.style.display = "block"; // Show delete button if editing
+  if (deletePostButton) deletePostButton.style.display = "block"; 
 } else {
   if (actionButton) actionButton.textContent = "Publish Post";
 }
@@ -82,7 +69,7 @@ if (postId) {
     console.warn('Edit Post Form not found. Please check the HTML for id="editPostForm".');
   }
 
-  // Event listener for delete button
+  
   if (deletePostButton) {
     deletePostButton.addEventListener("click", function () {
       if (!postId) {
@@ -95,8 +82,7 @@ if (postId) {
       deleteModal.style.display = "block";
     });
   }
-
-  // Close modal actions
+  
   const closeModal = document.getElementById('closeModal');
   const cancelDelete = document.getElementById('cancelDelete');
 
@@ -109,7 +95,6 @@ if (postId) {
     });
   }
 
-  // Confirm delete action
   const confirmDelete = document.getElementById('confirmDelete');
   if (confirmDelete) {
     confirmDelete.addEventListener("click", async function () {
@@ -123,7 +108,6 @@ if (postId) {
   }
 });
 
-// Function to insert HTML at the cursor position in the contenteditable div
 function insertAtCursor(editableDiv, html) {
   if (!editableDiv) {
     console.warn('Editable div not found or not provided.');
