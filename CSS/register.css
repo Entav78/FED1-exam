@@ -118,6 +118,7 @@ input::placeholder {
 
 #login-error-message,
 #register-error-message {
+  background-color: white;
   color: red;
   margin-top: 10px;
   text-align: center;

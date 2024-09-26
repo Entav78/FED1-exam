@@ -35,7 +35,6 @@
   border-bottom: 0.1vh solid #ddd;
 }
 
-/* Title styling */
 .post-title {
   font-size: 1.2rem;
   font-weight: bold;
@@ -44,7 +43,6 @@
   text-align: center;
 }
 
-/* Excerpt styling */
 .post-excerpt {
   padding: 0 1vh;
   color: #666;
@@ -52,13 +50,11 @@
   text-align: center;
 }
 
-/* Hover effect for each blog post */
 .blog-post:hover {
   transform: translateY(-0.5vh);
   box-shadow: 0 0.4vh 1vh rgba(0, 0, 0, 0.1);
 }
 
-/* Manage button styling */
 .manage-button {
   margin-top: 1vh;
   margin-bottom: 5%;
@@ -75,4 +71,5 @@
 .manage-button:hover {
   background-color: rgba(212, 175, 55, 1);
   color: black;
+  border: 2px solid black;
 }
