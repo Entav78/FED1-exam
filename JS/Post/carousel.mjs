@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     img.addEventListener('click', () => {
-      window.location.href = `/post/index.html?id=${post.id}`;
+      window.location.href = `../post/index.html?id=${post.id}`;
     });
   
     const titleElem = document.createElement('h3');
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newButton.classList.add('read-more');
       newButton.textContent = 'Read More';
       newButton.addEventListener('click', () => {
-        window.location.href = `/post/index.html?id=${postId}`;
+        window.location.href = `../post/index.html?id=${postId}`;
       });
       clone.appendChild(newButton);
     }
