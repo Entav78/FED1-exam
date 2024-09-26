@@ -1,5 +1,5 @@
-@import url('./../../CSS/Header.css');
-@import url('./../../CSS/carousel.css');
+@import url('./Header.css');
+@import url('/carousel.css');
 
 .post-grid {
   display: grid;
