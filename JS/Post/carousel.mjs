@@ -71,20 +71,18 @@ document.addEventListener("DOMContentLoaded", function () {
     readMoreButton.classList.add('read-more');
     readMoreButton.textContent = 'Read More';
     readMoreButton.addEventListener('click', () => {
-      console.log(`Read More clicked for post ID: ${post.id}`); // Log button click
+      console.log(`Read More clicked for post ID: ${post.id}`);
       window.location.href = `../post/index.html?id=${post.id}`;
     });
   
-    // Append the title, image, and body text to the content wrapper
     contentWrapper.appendChild(titleElem);
     contentWrapper.appendChild(img);
     contentWrapper.appendChild(bodyElem);
   
-    // Append the content wrapper and the read-more button to the slide
     slide.appendChild(contentWrapper);
     slide.appendChild(readMoreButton);
   
-    console.log(`Added Read More button to slide for post ID: ${post.id}`); // Log button addition
+    console.log(`Added Read More button to slide for post ID: ${post.id}`); 
     track.appendChild(slide);
   
     const dot = document.createElement('button');
@@ -102,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function createCloneSlides() {
     console.log('Cloning first and last slides for seamless looping.');
-    // Clone and clean slides to prevent duplicate buttons
     const firstClone = cloneAndCleanSlide(slides[0]);
     const lastClone = cloneAndCleanSlide(slides[slides.length - 1]);
     console.log('First and last slides cloned and cleaned of Read More buttons.');
@@ -110,14 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
     track.insertBefore(lastClone, slides[0]);
 
     slides = Array.from(track.children);
-    console.log(`Total slides after cloning: ${slides.length}`); // Log total slides count after cloning
+    console.log(`Total slides after cloning: ${slides.length}`); 
   }
 
   function cloneAndCleanSlide(slide, postId) {
     const clone = slide.cloneNode(true);
     const readMoreButton = clone.querySelector('.read-more');
   
-    // Option 1: Re-create the button for the cloned slide
     if (!readMoreButton) {
       const newButton = document.createElement('button');
       newButton.classList.add('read-more');
