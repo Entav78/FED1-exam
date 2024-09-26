@@ -200,8 +200,8 @@ nav {
 
 .footer {
   min-height: 30vh;
-  /*../assets/footer2Resized.jpg*/
-  background-image: url(../assets/headerResized.jpg);
+  /**/
+  background-image: url(../assets/footer2Resized.jpg);
   background-size: cover;
   background-position: center bottom;
   display: flex;
