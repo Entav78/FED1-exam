@@ -37,13 +37,11 @@ form h1 {
   border-radius: 8px 8px 0 0;
   margin: -20px -20px 20px -20px;
   color: rgba(212, 175, 55, 1);
-  /* Assuming this color is consistent with your theme */
 }
 
 label {
   font-weight: bold;
   color: rgba(212, 175, 55, 1);
-  /* White color for labels */
 }
 
 input {
@@ -52,13 +50,11 @@ input {
   border-radius: 4px;
   background-color: #f9f9f9;
   color: #333;
-  /* Text color inside inputs */
   margin-bottom: 15px;
 }
 
 input::placeholder {
   color: #666;
-  /* Placeholder color for better contrast */
 }
 
 .auth-button {
@@ -94,7 +90,6 @@ input::placeholder {
   filter: invert(81%) sepia(88%) saturate(2216%) hue-rotate(350deg) brightness(110%) contrast(102%);
 }
 
-
 .show-password {
   background-image: url('/assets/icon/eye-show.svg');
 }
@@ -109,7 +104,6 @@ input::placeholder {
   margin-top: 10px;
   color: rgba(212, 175, 55, 1);
 }
-
 
 #register-link a,
 #login-link a {
