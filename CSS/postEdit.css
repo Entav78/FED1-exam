@@ -109,8 +109,8 @@ input[type="text"] {
 }
 
 input.auto-input {
-  background-color: grey;
-  color: #333;
+  background-color: rgb(185, 185, 185);
+  color: #000000;
   border: 1px solid rgba(212, 175, 55, 1);
   border-radius: 0.5vh;
   padding: 1vh;
