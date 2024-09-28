@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createSlide(post, index) {
-    console.log(`Creating slide for post ID: ${post.id}`); // Log the post ID to track slide creation
+    console.log(`Creating slide for post ID: ${post.id}`); 
     const title = post.title || 'No Title Available';
     const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
@@ -42,9 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const slide = document.createElement('li');
     slide.classList.add('carousel-slide');
   
-    // Create the content wrapper to group title, image, and body
     const contentWrapper = document.createElement('div');
-    contentWrapper.classList.add('carousel-content'); // Ensure your CSS has styles for this class
+    contentWrapper.classList.add('carousel-content'); 
   
     const img = document.createElement('img');
     img.src = mediaUrl;
