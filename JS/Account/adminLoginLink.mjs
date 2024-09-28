@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.removeItem("userName");
   
           // Check if the current page is the edit page
-          if (window.location.pathname === "/post/edit.html") {
+          if (window.location.pathname === "https://entav78.github.io/FED1-exam/post/edit.html") {
             // Redirect to the blog feed page after logging out
-            window.location.href = "/index.html";
+            window.location.href = "https://entav78.github.io/FED1-exam/index.html";
           } else {
             // Reload the page to reflect the logged-out state
             window.location.reload();
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Set link text to "Admin Login" if the user is not logged in
       adminLoginLinks.forEach((link) => {
         link.textContent = "Admin Login";
-        link.href = "/account/login.html"; // Set the login URL
+        link.href = "https://entav78.github.io/FED1-exam/account/login.html"; // Set the login URL
       });
     }
   });
