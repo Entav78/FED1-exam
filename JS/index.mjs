@@ -54,7 +54,7 @@ async function loadPosts() { // Corrected function name to reflect its purpose
 
       // Create post link
       const postLink = document.createElement("a");
-      postLink.href = `/post/index.html?id=${post.id}`;
+      postLink.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
       postLink.className = "post-link"; // Add a class for styling if needed
 
       // Create post image
