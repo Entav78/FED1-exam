@@ -18,7 +18,7 @@ export async function createPost(post) {
     }
 
     alert("Post created successfully!");
-    window.location.href = `/post/index.html?id=${postId}`;
+    window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${postId}`;
   } catch (error) {
     console.error("Failed to create post:", error);
     alert(`Error creating post: ${error.message}`);
@@ -128,7 +128,7 @@ export async function updatePost(postId, post) {
 
     if (response.ok) {
       alert("Post updated successfully!");
-      window.location.href = `/post/index.html?id=${postId}`;
+      window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${postId}`;
     } else {
       console.error("Error response:", data);
       alert("Failed to update the post. Please try again.");
@@ -159,7 +159,7 @@ export async function deletePost(postId) {
     }
 
     alert("Post deleted successfully!");
-    window.location.href = "/post/index.html";
+    window.location.href = "https://entav78.github.io/FED1-exam/post/index.html";
   } catch (error) {
     console.error("Failed to delete post:", error);
     alert("An error occurred while trying to delete the post. Please try again.");

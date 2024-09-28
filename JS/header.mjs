@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       managePostLink2.style.display = 'none';
       adminLoginLinks.forEach((link) => {
         link.textContent = "Admin Login";
-        link.href = "/account/login.html";
+        link.href = "https://entav78.github.io/FED1-exam/account/login.html";
         link.removeEventListener('click', handleLogout);
       });
     }

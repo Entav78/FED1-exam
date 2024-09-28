@@ -26,7 +26,7 @@ export function initializeManageButton() {
 
 function redirectToManage(postId) {
   if (postId) {
-    window.location.href = `/post/edit.html?id=${postId}`;
+    window.location.href = `https://entav78.github.io/FED1-exam/post/edit.html?id=${postId}`;
   } else {
     console.error('Post ID not found. Cannot redirect to manage/edit page.');
   }
