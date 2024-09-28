@@ -26,7 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             if (userName) {
                 localStorage.setItem("userName", userName); 
             }
-            window.location.href = "/post/edit.html";
+            window.location.href = "https://entav78.github.io/FED1-exam/post/edit.html";
         } else if (errors && errors.length > 0) {
             const errorMessage = errors[0].message || "Login failed. Please check your email and password.";
             console.log("Error message from API:", errorMessage);
