@@ -117,14 +117,17 @@ nav {
   width: 5vh;
   height: 5vh;
   fill: black;
-  transition: fill 0.3s ease;
+  background-color: rgba(255, 255, 255, 1);
+  transition: background-color 0.3s ease, fill 0.3s ease;
   cursor: pointer;
   display: block;
+  border-radius: 50%;
 }
 
 
 .close-icon:hover {
   fill: rgba(212, 175, 55, 1);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .close-sidebar a {
@@ -140,15 +143,20 @@ nav {
 
 }
 
+/*
 .close-sidebar a:hover {
   background: none !important;
   color: inherit !important;
 }
-
+*/
 .close-icon path {
   stroke: black;
   stroke-width: 2;
   fill: none;
+}
+
+.close-icon:hover path {
+  stroke: rgba(212, 175, 55, 1);
 }
 
 .sidebar {
@@ -271,8 +279,6 @@ nav {
   .sidebar.active {
     transform: translateX(0);
   }
-
-
 
   #managePostLink1 {
     display: none;
