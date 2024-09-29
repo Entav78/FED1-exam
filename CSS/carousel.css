@@ -36,7 +36,7 @@
 
 .carousel-track img {
   width: 100%;
-  height: 20vh;
+  height: 18vh;
   object-fit: cover;
   display: block;
   cursor: pointer;
@@ -58,7 +58,22 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-slide h3,
+.carousel-slide h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5vh 0;
+  color: #333;
+  text-align: left;
+  max-height: 3vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+/*.carousel-slide h3,*/
 .carousel-slide p {
   padding: 1vh;
   text-align: center;
@@ -162,6 +177,10 @@
 @media (max-width: 600px) {
   .carousel-container {
     flex-direction: column;
+  }
+
+  .carousel-slide h3 {
+    font-size: 0.9rem;
   }
 
   .carousel-button {
