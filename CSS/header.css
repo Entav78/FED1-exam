@@ -160,8 +160,13 @@ nav {
   height: 100vh;
   width: 250px;
   z-index: 550;
+  /*
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(212, 175, 55, 0.5));
   backdrop-filter: blur(10px);
+  */
+  background-image: url('/path/to/your/header-image.jpg'); 
+  background-position: right center; 
+  background-size: cover;
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   padding-top: 80px;
@@ -263,7 +268,7 @@ nav {
   }
 
   .sidebar {
-    background: rgba(255, 255, 255, 1);
+   /* background: rgba(255, 255, 255, 1);*/
     backdrop-filter: none;
     display: flex;
     transform: translateX(100%);
