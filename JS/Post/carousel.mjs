@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const title = post.title || 'No Title Available';
     const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
-    const maxContentLength = 100;
+    const maxContentLength = 70;
     const bodyText = post.body ? post.body.substring(0, maxContentLength) : 'No content available...';
   
     const slide = document.createElement('li');
@@ -78,6 +78,10 @@ document.addEventListener("DOMContentLoaded", function () {
     contentWrapper.appendChild(titleElem);
     contentWrapper.appendChild(img);
     contentWrapper.appendChild(bodyElem);
+
+    slide.style.display = 'flex';
+    slide.style.flexDirection = 'column';
+    slide.style.justifyContent = 'space-between';
   
     slide.appendChild(contentWrapper);
     slide.appendChild(readMoreButton);
@@ -97,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
-
   function createCloneSlides() {
     console.log('Cloning first and last slides for seamless looping.');
     const firstClone = cloneAndCleanSlide(slides[0]);
