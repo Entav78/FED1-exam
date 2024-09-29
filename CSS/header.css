@@ -133,14 +133,14 @@ nav {
 .close-sidebar a {
   display: block;
   width: 5vh;
-  height: 5vh;
+  /*height: 5vh;*/
   text-decoration: none;
   background: none;
   padding: 0;
   border: none;
   z-index: 1100;
   outline: none;
-
+  margin-bottom: 2vh;
 }
 
 /*
