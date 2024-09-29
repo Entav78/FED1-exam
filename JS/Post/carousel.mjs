@@ -37,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const title = post.title || 'No Title Available';
     const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
-    const bodyText = post.body ? post.body.substring(0, 200) : 'No content available...';
+    const maxContentLength = 100;
+    const bodyText = post.body ? post.body.substring(0, maxContentLength) : 'No content available...';
   
     const slide = document.createElement('li');
     slide.classList.add('carousel-slide');
