@@ -160,8 +160,8 @@ nav {
   height: 100vh;
   width: 250px;
   z-index: 550;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(212, 175, 55, 0.3));
-  backdrop-filter: blur(20px);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(212, 175, 55, 0.5));
+  backdrop-filter: blur(10px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   padding-top: 80px;
@@ -187,6 +187,7 @@ nav {
   width: 100%;
   z-index: 10;
   font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .sidebar a:hover {
@@ -262,12 +263,20 @@ nav {
   }
 
   .sidebar {
+    background: rgba(255, 255, 255, 1);
+    backdrop-filter: none;
     display: flex;
     transform: translateX(100%);
+    transition: transform 0.3s ease;
   }
 
   .sidebar.active {
     transform: translateX(0);
+  }
+
+  .sidebar a {
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
   }
 
   #managePostLink1 {
