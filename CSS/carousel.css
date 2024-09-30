@@ -164,6 +164,14 @@
     font-size: 0.9rem;
   }
 
+  .carousel-slide p {
+    font-size: 0.8rem;
+  }
+
+  .carousel-slide img {
+    height: 15vh;
+  }
+
   .carousel-button {
     width: 5vh;
     height: 5vh;

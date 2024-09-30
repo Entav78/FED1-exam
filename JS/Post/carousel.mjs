@@ -33,10 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createSlide(post, index) {
+    const screenWidth = window.innerWidth;
+    const maxContentLength = screenWidth <= 500 ? 30 : screenWidth <= 800 ? 50 : 70; 
+
     const title = post.title || 'No Title Available';
     const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
-    const maxContentLength = 70;
     const bodyText = post.body ? post.body.substring(0, maxContentLength) : 'No content available...';
 
     const slide = document.createElement('li');
@@ -52,14 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     img.style.height = '20vh';
     img.style.objectFit = 'cover';
 
-    img.addEventListener('error', function () {
-      img.src = 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
-    });
-
-    img.addEventListener('click', () => {
-      window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
-    });
-
     const titleElem = document.createElement('h3');
     titleElem.textContent = title;
 
@@ -70,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     readMoreButton.classList.add('read-more');
     readMoreButton.textContent = 'Read More';
     readMoreButton.addEventListener('click', () => {
-      window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
+        window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
     });
 
     contentWrapper.appendChild(titleElem);
@@ -92,12 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
     dotArray.push(dot);
 
     dot.addEventListener('click', () => {
-      const realIndex = index % (slides.length - 2);  // Ignore the cloned slides
-      goToSlide(realIndex);  // Adjusted index
-      updateActiveDot(realIndex);
-      currentIndex = realIndex;
+        goToSlide(index);
+        updateActiveDot(index);
+        currentIndex = index;
     });
-  }
+}
+
 
   function createCloneSlides() {
     const firstClone = cloneAndCleanSlide(slides[0]);
