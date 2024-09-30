@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dotsNav = document.querySelector('.carousel-nav');
   const dotArray = [];
   let currentIndex = 0;
-  let slidesToShow = 3; // Default number of slides
+  let slidesToShow = 3; 
   let slides;
 
   function updateSlidesToShow() {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       slidesToShow = 3;
     }
 
-    setSlidePosition(); // Ensure the position is recalculated after resizing
+    setSlidePosition(); 
   }
 
   window.addEventListener('resize', updateSlidesToShow);
@@ -108,9 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
     dotArray.push(dot);
 
     dot.addEventListener('click', () => {
-      goToSlide(index);
-      updateActiveDot(index);
-      currentIndex = index;
+      const realIndex = index % (slides.length - 2);  // Ignore the cloned slides
+      goToSlide(realIndex);  // Adjusted index
+      updateActiveDot(realIndex);
+      currentIndex = realIndex;
     });
   }
 
@@ -120,14 +121,14 @@ document.addEventListener("DOMContentLoaded", function () {
     track.appendChild(firstClone);
     track.insertBefore(lastClone, slides[0]);
 
-    slides = Array.from(track.children); // Update the slides array
+    slides = Array.from(track.children); 
   }
 
   function cloneAndCleanSlide(slide) {
     const clone = slide.cloneNode(true);
     const readMoreButton = clone.querySelector('.read-more');
     if (readMoreButton) {
-      readMoreButton.remove(); // Remove Read More from clones
+      readMoreButton.remove(); 
     }
     return clone;
   }
@@ -174,20 +175,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function goToSlide(index) {
-    // Adjust the transition and transform for seamless loop
     track.style.transform = `translateX(-${((index + 1) * 100) / slidesToShow}%)`;
     currentIndex = index;
     updateActiveDot(index);
   }
 
   function updateActiveDot(index) {
-    // Only count the original (non-cloned) slides for the dot navigation
-    const realIndex = (index + (slidesToShow - 1)) % (slides.length - 2);
+    const realIndex = index % (slides.length - 2);  // Adjust for cloned slides
     dotArray.forEach((dot, i) => {
       dot.classList.toggle('active', i === realIndex);
     });
   }
 });
+
 
 
 
