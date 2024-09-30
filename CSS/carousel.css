@@ -186,18 +186,21 @@
     right: 2vw;
   }
 
-  .post-card p, .blog-post p {
+  .post-container p {
     font-size: 0.8rem;
     max-height: 5vh;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .post-card img, .blog-post img {
+  .post-container img {
     height: 15vh;
+    object-fit: cover;
   }
 
-  .post-card .read-more, .blog-post .read-more {
+  .post-container .read-more {
     font-size: 0.8rem;
   }
+
 }
