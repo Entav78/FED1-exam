@@ -17,6 +17,7 @@ main {
 
 h2 {
   color: rgba(212, 175, 55, 1);
+  margin: 2vh auto;
 }
 
 #postContainer {
