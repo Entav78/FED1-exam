@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function createSlide(post, index) {
     const screenWidth = window.innerWidth;
-    const maxContentLength = screenWidth <= 500 ? 30 : screenWidth <= 800 ? 50 : 70; 
+    const maxContentLength = screenWidth <= 500 ? 20 : screenWidth <= 800 ? 40 : 70; 
 
     const title = post.title || 'No Title Available';
     const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';

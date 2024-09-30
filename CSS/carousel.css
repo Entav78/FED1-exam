@@ -185,4 +185,19 @@
   .next {
     right: 2vw;
   }
+
+  .post-card p, .blog-post p {
+    font-size: 0.8rem;
+    max-height: 5vh;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .post-card img, .blog-post img {
+    height: 15vh;
+  }
+
+  .post-card .read-more, .blog-post .read-more {
+    font-size: 0.8rem;
+  }
 }
