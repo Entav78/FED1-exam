@@ -4,7 +4,7 @@ export function generatePostHtml(post) {
 
   postContainer.setAttribute("data-post-id", post.id); 
 
-  const postTitle = document.createElement("h2");
+  const postTitle = document.createElement("h3");
   postTitle.textContent = post.title || "No title found";
 
   const postAuthor = document.createElement("p");

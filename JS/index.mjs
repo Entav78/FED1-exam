@@ -56,7 +56,7 @@ async function loadPosts() {
     console.warn("No image URL provided for this post.");
   }
 
-      const postTitle = document.createElement("h2");
+      const postTitle = document.createElement("h3");
       postTitle.textContent = post.title || "Untitled Post";
 
       const postExcerpt = document.createElement("p");
