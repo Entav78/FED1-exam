@@ -155,6 +155,7 @@
   /* Using rem for button text */
 }
 
+/*
 @media (max-width: 600px) {
   .carousel-container {
     flex-direction: column;
@@ -162,7 +163,6 @@
 
   .carousel-slide h3 {
     font-size: 1.2rem;
-    /* Adjusting for smaller screens */
   }
 
   .carousel-slide p {
@@ -196,7 +196,7 @@
     font-size: 0.8rem;
   }
 }
-
+*/
 
 /*
 .carousel-container {
