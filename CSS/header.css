@@ -21,10 +21,16 @@ body {
   padding: 20px 0;
 }
 
-h1 {
+h1,
+h2 {
+  font-size: 3rem;
   color: rgba(212, 175, 55, 1);
   margin: 0;
   text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
 }
 
 nav {
