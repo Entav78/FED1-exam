@@ -178,3 +178,16 @@
     right: 2vw;
   }
 }
+
+@media (max-width: 500px) {
+  .carousel-slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel-slide {
+    flex: 0 0 50%;
+  }
+}
