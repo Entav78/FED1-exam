@@ -8,6 +8,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const slidesToShow = 3;
   let slides;
 
+  function updateSlidesToShow() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 500) {
+      slidesToShow = 1; 
+    } else if (screenWidth <= 800) {
+      slidesToShow = 2; 
+    } else {
+      slidesToShow = 3; 
+    }
+
+    setSlidePosition();
+  }
+
+  window.addEventListener('resize', updateSlidesToShow);
+
   fetchLatestPosts();
 
   function fetchLatestPosts() {
@@ -25,11 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
         slides = Array.from(track.children);
         createCloneSlides(); 
         setSlidePosition();
+        updateSlidesToShow(); // Set the correct number of slides initially
         updateActiveDot(currentIndex);
         nextButton.addEventListener('click', moveToNextSlide);
         prevButton.addEventListener('click', moveToPrevSlide);
       })
       .catch(error => console.error('Error fetching posts:', error));
+  }
+
+  function setSlidePosition() {
+    slides.forEach((slide, index) => {
+      slide.style.left = `${(index * 100) / slidesToShow}%`;
+    });
+    track.style.transform = `translateX(-${(100 / slidesToShow)}%)`;
   }
 
   function createSlide(post, index) {
