@@ -23,6 +23,13 @@
   height: 100%;
 }
 
+.blog-post p {
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Image styling */
 .post-image {
   width: 100%;
@@ -68,4 +75,18 @@
   background-color: rgba(212, 175, 55, 1);
   color: black;
   border: 2px solid black;
+}
+
+@media (max-width: 600px) {
+  .blog-post p {
+    font-size: 0.75rem;
+    max-height: 2.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.8;
+  }
+
+  .blog-post h3 {
+    font-size: 1.125rem;
+  }
 }
