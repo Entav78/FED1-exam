@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dotsNav = document.querySelector('.carousel-nav');
   const dotArray = [];
   let currentIndex = 0;
-  let slidesToShow = 3; 
+  let slidesToShow = 3; // Default number of slides
   let slides;
 
   function updateSlidesToShow() {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       slidesToShow = 3;
     }
 
-    setSlidePosition(); 
+    setSlidePosition(); // Ensure the position is recalculated after resizing
   }
 
   window.addEventListener('resize', updateSlidesToShow);
@@ -120,14 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
     track.appendChild(firstClone);
     track.insertBefore(lastClone, slides[0]);
 
-    slides = Array.from(track.children); 
+    slides = Array.from(track.children); // Update the slides array
   }
 
   function cloneAndCleanSlide(slide) {
     const clone = slide.cloneNode(true);
     const readMoreButton = clone.querySelector('.read-more');
     if (readMoreButton) {
-      readMoreButton.remove(); 
+      readMoreButton.remove(); // Remove Read More from clones
     }
     return clone;
   }
@@ -174,18 +174,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function goToSlide(index) {
+    // Adjust the transition and transform for seamless loop
     track.style.transform = `translateX(-${((index + 1) * 100) / slidesToShow}%)`;
     currentIndex = index;
     updateActiveDot(index);
   }
 
   function updateActiveDot(index) {
-    const realIndex = index % (slides.length - 2);
+    // Only count the original (non-cloned) slides for the dot navigation
+    const realIndex = (index + (slidesToShow - 1)) % (slides.length - 2);
     dotArray.forEach((dot, i) => {
       dot.classList.toggle('active', i === realIndex);
     });
   }
 });
+
 
 
 
