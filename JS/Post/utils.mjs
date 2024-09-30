@@ -5,5 +5,5 @@ export function getUrlParameter(name) {
 }
 
 export function isLoggedIn() {
-  return !!localStorage.getItem('accessToken'); // Consistent login check
+  return !!localStorage.getItem('accessToken'); 
 }

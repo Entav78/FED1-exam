@@ -121,11 +121,9 @@ export async function loadPostData(postId) {
 
 export async function updatePost(postId, post) {
   const userName = localStorage.getItem('userName');
-  const postEndpoint = getPostEndpoint(userName, postId); // Correct usage
-
+  const postEndpoint = getPostEndpoint(userName, postId); 
   try {
-    const { response, data } = await fetchData(postEndpoint, "PUT", post); // Correct fetch URL
-
+    const { response, data } = await fetchData(postEndpoint, "PUT", post); 
     if (response.ok) {
       alert("Post updated successfully!");
       window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${postId}`;

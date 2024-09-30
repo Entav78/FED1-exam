@@ -2,12 +2,10 @@
 
 body {
   color: rgba(212, 175, 55, 1);
-  font-family: 'Arial', sans-serif;
 }
 
 .content-editor {
   border: 1px solid rgba(212, 175, 55, 1);
-  /* Gold border for a sleek look */
   padding: 2vh;
   height: auto;
   min-height: 20vh;
@@ -28,7 +26,6 @@ body {
   border-radius: 0.5vh;
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -42,7 +39,6 @@ body {
   backdrop-filter: blur(5px);
 }
 
-
 .modal-content {
   background-color: black;
   margin: 20vh auto;
@@ -54,7 +50,6 @@ body {
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
-
 
 .close-button {
   color: rgba(212, 175, 55, 1);
@@ -96,7 +91,6 @@ form div {
   margin-bottom: 2vh;
 }
 
-
 input[type="text"] {
   width: 100%;
   padding: 1vh;
@@ -126,7 +120,6 @@ input.auto-input {
   border-bottom: 1px solid rgba(212, 175, 55, 1);
 }
 
-
 .button-group {
   display: flex;
   gap: 1vh;
@@ -144,8 +137,6 @@ input.auto-input {
   border: 1px solid rgba(212, 175, 55, 1);
   cursor: pointer;
 }
-
-
 
 .deletePostButton:hover {
   background-color: red !important;

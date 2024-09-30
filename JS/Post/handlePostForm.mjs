@@ -2,17 +2,16 @@ import { loadPostData, createPost, updatePost } from "./postActions.mjs";
 import { handleDelete, handleUndoButton } from "./undoHandler.mjs";
 import { getUrlParameter } from "./utils.mjs";
 
-// Main control flow when the document is ready
 document.addEventListener("DOMContentLoaded", function () {
   const editPostForm = document.getElementById("editPostForm");
-  const postId = getUrlParameter("id"); // Get post ID from URL
+  const postId = getUrlParameter("id"); 
 
   if (postId) {
-    loadPostData(postId); // Load existing post data if editing
+    loadPostData(postId);
   }
 
   editPostForm.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     const post = {
       title: document.getElementById("title").value,
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  handleUndoButton(); // Initialize undo button listener
+  handleUndoButton();
 });
 
 

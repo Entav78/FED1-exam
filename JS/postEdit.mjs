@@ -28,7 +28,6 @@ if (postId) {
   if (actionButton) actionButton.textContent = "Publish Post";
 }
 
-  // Set up event listener for form submission (create or update post)
   if (editPostForm) {
     editPostForm.addEventListener("submit", async function (event) {
       event.preventDefault();

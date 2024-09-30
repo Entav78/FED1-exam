@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dotsNav = document.querySelector('.carousel-nav');
   const dotArray = [];
   let currentIndex = 0;
-  const slidesToShow = 3; // Always 3 slides, no matter the screen size
+  const slidesToShow = 3;
   let slides;
 
   fetchLatestPosts();
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateActiveDot(index) {
-    const realIndex = index % (slides.length - 2);  // Adjust for cloned slides
+    const realIndex = index % (slides.length - 2);
     dotArray.forEach((dot, i) => {
       dot.classList.toggle('active', i === realIndex);
     });

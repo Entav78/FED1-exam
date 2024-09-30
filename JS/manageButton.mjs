@@ -1,4 +1,3 @@
-// manageButton.mjs
 export function initializeManageButton() {
   const isLoggedIn = !!localStorage.getItem('accessToken');
 

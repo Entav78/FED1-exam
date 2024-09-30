@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (hamburgerLink) {
       hamburgerLink.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default navigation
-        sidebar.classList.toggle('active'); // Toggle the sidebar
-        updateLinkVisibility(); // Update link visibility as needed
+        event.preventDefault(); 
+        sidebar.classList.toggle('active'); 
+        updateLinkVisibility();
         console.log("Hamburger menu button clicked. Sidebar toggled:", sidebar.classList.contains('active'));
       });
     }
@@ -80,12 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
       link.addEventListener('click', function (event) {
         console.log(`Clicked on link: ${link.href} with text: ${link.textContent}`);
     
-        // Prevent default only if the link's href is exactly '#'
         if (link.getAttribute('href') === '#') {
           event.preventDefault();
           console.log(`Preventing default action for href='#'. Link text: ${link.textContent}`);
         } else if (link.href === window.location.href + '#') {
-          // Specific case handling if it still matches Blog Feed
           event.preventDefault();
           console.log(`Preventing default action specifically for href='#': ${link.href}`);
         } else {
@@ -97,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
   }
 
-  // Update visibility on window resize
   window.addEventListener("resize", function () {
     updateLinkVisibility();
     console.log("Window resized. Checking link visibility.");
@@ -110,19 +107,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Listen for changes to the accessToken to update the navigation state
   window.addEventListener('storage', function () {
     updateLinkVisibility();
     console.log("Local storage updated. Checking link visibility.");
   });
 
-  // Ensure visibility is correctly managed upon page load and interaction
   window.addEventListener('load', function () {
     updateLinkVisibility();
     console.log("Page loaded. Checking link visibility.");
   });
 
-  // Add an event listener to the "ksa" link to ensure it redirects properly
   if (ksaLink) {
     ksaLink.addEventListener('click', function (event) {
       console.log(`Clicked on ksa link: ${ksaLink.href}`);

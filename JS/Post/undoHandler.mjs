@@ -1,8 +1,6 @@
-// Global variables for undo functionality
 let undoTimer;
 let deletedPost;
 
-// Function to handle deleting the post with undo option
 export async function handleDelete(postId) {
   const confirmation = confirm('Are you sure you want to delete this post? This action cannot be undone.');
   if (!confirmation) return;
@@ -18,7 +16,6 @@ export async function handleDelete(postId) {
     await permanentlyDeletePost(postId);
   }, 10000); 
 
- // Clear any existing timers before starting a new one
  clearTimeout(undoTimer);
 
  undoTimer = setTimeout(async () => {
@@ -26,7 +23,6 @@ export async function handleDelete(postId) {
  }, 10000); 
 }
 
-// Function to handle permanent deletion
 async function permanentlyDeletePost(postId) {
   try {
     const response = await fetch(`/api/posts/${postId}`, {
@@ -48,14 +44,12 @@ async function permanentlyDeletePost(postId) {
   }
 }
 
-// Handle delete errors and restore post
 function handleErrorInDelete() {
   alert('Failed to delete the post. Please try again.');
   deletedPost.style.display = 'block';
   document.getElementById('undo-container').style.display = 'none';
 }
 
-// Function to handle undo button click
 export function handleUndoButton() {
   const undoButton = document.getElementById('undo-button');
   if (!undoButton) {
@@ -64,9 +58,9 @@ export function handleUndoButton() {
   }
 
   undoButton.addEventListener('click', () => {
-    clearTimeout(undoTimer); // Stop the timer
-    deletedPost.style.display = 'block'; // Show the deleted post
-    document.getElementById('undo-container').style.display = 'none'; // Hide the undo container
-    alert('Post restored.'); // Notify the user
+    clearTimeout(undoTimer);
+    deletedPost.style.display = 'block'; 
+    document.getElementById('undo-container').style.display = 'none'; 
+    alert('Post restored.'); 
   });
 }

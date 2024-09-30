@@ -22,14 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Function to load a specific post using the correct username and post ID
 async function loadPost(username, postId) {
   const token = localStorage.getItem("accessToken");
   const endpoint = getPostEndpoint(username, postId); 
   await fetchPost(endpoint, token);
 }
 
-// Fetch Post Function with Improved Error Handling
 async function fetchPost(endpoint, token = null) {
   const loadingMessage = document.getElementById("loadingMessage");
   const errorMessage = document.getElementById("errorMessage");
@@ -40,7 +38,6 @@ async function fetchPost(endpoint, token = null) {
     return;
   }
 
-  // Clear existing content before appending new post
   postContainer.innerHTML = '';
 
   if (loadingMessage) loadingMessage.style.display = 'block';
@@ -69,11 +66,9 @@ async function fetchPost(endpoint, token = null) {
       return;
     }
 
-    // Generate and display the post HTML
     const postHtml = generatePostHtml(postData);
     postContainer.appendChild(postHtml);
 
-    // Directly check for the button after appending the content
     const copyLinkButton = document.getElementById("copyLinkButton");
     console.log("Direct check for Copy Link Button after content load:", copyLinkButton);
 

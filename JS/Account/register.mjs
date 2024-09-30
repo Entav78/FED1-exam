@@ -29,23 +29,19 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
         console.log("Full API response received:", response);
 
-        // Check if there is an errors array, possibly nested
         const errors = response.data?.errors || response.errors || response.data?.data?.errors;
         const statusCode = response.statusCode || response.data?.statusCode;
 
         if (errors && errors.length > 0) {
-            // Display the first error message from the errors array
             const errorMessage = errors[0].message || "An error occurred. Please try again.";
             console.log("Error message from API:", errorMessage);
             document.getElementById("register-error-message").innerText = errorMessage;
 
-            // If the error message indicates an existing profile, suggest logging in
             if (errorMessage.includes("Profile already exists")) {
                 document.getElementById("register-error-message").innerHTML += 
                     '<br/>Already have an account? <a href="/account/login.html">Log in here</a>';
             } 
         } else if (response.data && statusCode === 201) {
-            // Handle successful registration
             console.log("Registration successful, user data:", response.data);
             document.getElementById("register-error-message").innerText = "Registration successful! Please log in.";
         } else {
