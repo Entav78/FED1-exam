@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     img.style.height = '20vh';
     img.style.objectFit = 'cover';
 
-    const titleElem = document.createElement('h3');
+    const titleElem = document.createElement('h2');
     titleElem.textContent = title;
 
     const bodyElem = document.createElement('p');
