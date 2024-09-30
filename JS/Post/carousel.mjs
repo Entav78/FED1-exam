@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const screenWidth = window.innerWidth;
 
     if (screenWidth <= 400) {
-      slidesToShow = 1; 
+      slidesToShow = 1;
     } else if (screenWidth <= 500) {
-      slidesToShow = 2; 
+      slidesToShow = 2;
     } else {
-      slidesToShow = 3; 
+      slidesToShow = 3;
     }
 
-    setSlidePosition();
+    setSlidePosition(); 
   }
 
   window.addEventListener('resize', updateSlidesToShow);
@@ -49,48 +49,46 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createSlide(post, index) {
-    console.log(`Creating slide for post ID: ${post.id}`); 
     const title = post.title || 'No Title Available';
     const mediaUrl = post.media?.url || 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     const mediaAlt = post.media?.alt || 'Post Image';
     const maxContentLength = 70;
     const bodyText = post.body ? post.body.substring(0, maxContentLength) : 'No content available...';
-  
+
     const slide = document.createElement('li');
     slide.classList.add('carousel-slide');
-  
+
     const contentWrapper = document.createElement('div');
-    contentWrapper.classList.add('carousel-content'); 
-  
+    contentWrapper.classList.add('carousel-content');
+
     const img = document.createElement('img');
     img.src = mediaUrl;
     img.alt = mediaAlt;
     img.style.width = '100%';
     img.style.height = '20vh';
     img.style.objectFit = 'cover';
-  
+
     img.addEventListener('error', function () {
       img.src = 'https://entav78.github.io/FED1-exam/assets/default-image.jpg';
     });
-  
+
     img.addEventListener('click', () => {
       window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
     });
-  
+
     const titleElem = document.createElement('h3');
     titleElem.textContent = title;
-  
+
     const bodyElem = document.createElement('p');
     bodyElem.textContent = `${bodyText}...`;
-  
+
     const readMoreButton = document.createElement('button');
     readMoreButton.classList.add('read-more');
     readMoreButton.textContent = 'Read More';
     readMoreButton.addEventListener('click', () => {
-      console.log(`Read More clicked for post ID: ${post.id}`);
       window.location.href = `https://entav78.github.io/FED1-exam/post/index.html?id=${post.id}`;
     });
-  
+
     contentWrapper.appendChild(titleElem);
     contentWrapper.appendChild(img);
     contentWrapper.appendChild(bodyElem);
@@ -98,45 +96,39 @@ document.addEventListener("DOMContentLoaded", function () {
     slide.style.display = 'flex';
     slide.style.flexDirection = 'column';
     slide.style.justifyContent = 'space-between';
-  
+
     slide.appendChild(contentWrapper);
     slide.appendChild(readMoreButton);
-  
-    console.log(`Added Read More button to slide for post ID: ${post.id}`); 
+
     track.appendChild(slide);
-  
+
     const dot = document.createElement('button');
     dot.classList.add('carousel-dot');
     dotsNav.appendChild(dot);
     dotArray.push(dot);
-  
+
     dot.addEventListener('click', () => {
       goToSlide(index);
       updateActiveDot(index);
       currentIndex = index;
     });
   }
-  
+
   function createCloneSlides() {
-    console.log('Cloning first and last slides for seamless looping.');
     const firstClone = cloneAndCleanSlide(slides[0]);
     const lastClone = cloneAndCleanSlide(slides[slides.length - 1]);
-    console.log('First and last slides cloned and cleaned of Read More buttons.');
     track.appendChild(firstClone);
     track.insertBefore(lastClone, slides[0]);
 
-    slides = Array.from(track.children);
-    console.log(`Total slides after cloning: ${slides.length}`); 
+    slides = Array.from(track.children); 
   }
 
   function cloneAndCleanSlide(slide) {
     const clone = slide.cloneNode(true);
     const readMoreButton = clone.querySelector('.read-more');
-  
     if (readMoreButton) {
-      readMoreButton.remove();
+      readMoreButton.remove(); 
     }
-  
     return clone;
   }
 
@@ -194,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
 
 
 
