@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dot = document.createElement('button');
     dot.classList.add('carousel-dot');
+    dot.setAttribute('aria-label', `Navigate to slide ${index + 1}`);
     dotsNav.appendChild(dot);
     dotArray.push(dot);
 
