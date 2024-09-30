@@ -178,23 +178,3 @@
     right: 2vw;
   }
 }
-
-@media (max-width: 800px) {
-  .carousel-slide {
-    flex: 0 0 33.33%;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 500px) {
-  .carousel-slide {
-    flex: 0 0 50%;
-  }
-}
-
-@media (max-width: 400px) {
-  .carousel-slide {
-    flex: 0 0 100%;
-    box-sizing: border-box;
-  }
-}

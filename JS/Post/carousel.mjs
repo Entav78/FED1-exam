@@ -5,24 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const dotsNav = document.querySelector('.carousel-nav');
   const dotArray = [];
   let currentIndex = 0;
-  let slidesToShow = 3; 
+  const slidesToShow = 3; // Always 3 slides, no matter the screen size
   let slides;
-
-  function updateSlidesToShow() {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth <= 400) {
-      slidesToShow = 1;
-    } else if (screenWidth <= 500) {
-      slidesToShow = 2;
-    } else {
-      slidesToShow = 3;
-    }
-
-    setSlidePosition(); 
-  }
-
-  window.addEventListener('resize', updateSlidesToShow);
 
   fetchLatestPosts();
 
@@ -40,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         slides = Array.from(track.children);
         createCloneSlides(); 
-        updateSlidesToShow(); 
+        setSlidePosition(); 
         updateActiveDot(currentIndex);
         nextButton.addEventListener('click', moveToNextSlide);
         prevButton.addEventListener('click', moveToPrevSlide);
@@ -187,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
 
 
 
