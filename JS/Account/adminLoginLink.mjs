@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const adminLoginLinks = document.querySelectorAll("#adminLoginLink");
+    const adminLoginLinks = document.querySelectorAll(".admin-login-link");
     const editPostLinks = document.querySelectorAll("#editPostLink");
   
     editPostLinks.forEach((link) => (link.style.display = "none"));

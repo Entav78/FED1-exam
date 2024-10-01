@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const hamburgerLink = document.querySelector('.hamburger-menu a');
   const managePostLink1 = document.getElementById('managePostLink1');
   const managePostLink2 = document.getElementById('managePostLink2');
-  const adminLoginLinks = document.querySelectorAll("#adminLoginLink");
+  const adminLoginLinks = document.querySelectorAll(".admin-login-link");
   const ksaLink = document.querySelector('.ksa-link');
 
   function updateLinkVisibility() {
