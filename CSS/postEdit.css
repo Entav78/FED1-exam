@@ -16,6 +16,7 @@ label {
 }
 
 .content-editor {
+  width: 100%;
   border: 1px solid rgba(212, 175, 55, 1);
   padding: 2vh;
   height: auto;
