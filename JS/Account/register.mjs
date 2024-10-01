@@ -27,14 +27,11 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     try {
         const response = await fetchData(REGISTER_ENDPOINT, 'POST', userData);
 
-        console.log("Full API response received:", response);
-
         const errors = response.data?.errors || response.errors || response.data?.data?.errors;
         const statusCode = response.statusCode || response.data?.statusCode;
 
         if (errors && errors.length > 0) {
             const errorMessage = errors[0].message || "An error occurred. Please try again.";
-            console.log("Error message from API:", errorMessage);
             document.getElementById("register-error-message").innerText = errorMessage;
 
             if (errorMessage.includes("Profile already exists")) {
@@ -42,7 +39,6 @@ document.getElementById("registerForm").addEventListener("submit", async functio
                     '<br/>Already have an account? <a href="/account/login.html">Log in here</a>';
             } 
         } else if (response.data && statusCode === 201) {
-            console.log("Registration successful, user data:", response.data);
             document.getElementById("register-error-message").innerText = "Registration successful! Please log in.";
         } else {
             document.getElementById("register-error-message").innerText = "An unknown error occurred. Please try again.";

@@ -13,9 +13,6 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     try {
         const response = await fetchData(LOGIN_ENDPOINT, 'POST', { email, password });
-
-        console.log("API response received:", response);
-
         const accessToken = response.data?.accessToken || response.accessToken || response.data?.data?.accessToken;
         const userName = response.data?.name || response.name || response.data?.data?.name;
 
@@ -29,7 +26,6 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             window.location.href = "https://entav78.github.io/FED1-exam/post/edit.html";
         } else if (errors && errors.length > 0) {
             const errorMessage = errors[0].message || "Login failed. Please check your email and password.";
-            console.log("Error message from API:", errorMessage);
             document.getElementById("login-error-message").innerText = errorMessage;
         } else {
             document.getElementById("login-error-message").innerText = "Login failed. Please check your email and password.";

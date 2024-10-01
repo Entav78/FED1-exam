@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateLinkVisibility() {
     const isLoggedIn = !!localStorage.getItem("accessToken");
     const screenWidth = window.innerWidth;
-    console.log('Updating link visibility:', { isLoggedIn, screenWidth });
 
     if (isLoggedIn) {
       if (screenWidth > 800) {
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userName");
 
-    console.log("Logout clicked. Reloading or redirecting.");
     if (window.location.pathname === "/post/edit.html") {
       window.location.href = "/index.html";
     } else {
@@ -62,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
           sidebar.classList.remove('active');
           updateLinkVisibility();
           hamburgerLink.style.display = 'block'; 
-          console.log("Close button clicked. Sidebar closed.");
         }
       });
     }
@@ -72,23 +69,16 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); 
         sidebar.classList.toggle('active'); 
         updateLinkVisibility();
-        console.log("Hamburger menu button clicked. Sidebar toggled:", sidebar.classList.contains('active'));
       });
     }
 
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function (event) {
-        console.log(`Clicked on link: ${link.href} with text: ${link.textContent}`);
-    
         if (link.getAttribute('href') === '#') {
           event.preventDefault();
-          console.log(`Preventing default action for href='#'. Link text: ${link.textContent}`);
         } else if (link.href === window.location.href + '#') {
           event.preventDefault();
-          console.log(`Preventing default action specifically for href='#': ${link.href}`);
-        } else {
-          console.log("Navigating to:", link.href);
-        }
+        } 
       });
     });
     
@@ -97,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("resize", function () {
     updateLinkVisibility();
-    console.log("Window resized. Checking link visibility.");
 
     if (window.innerWidth > 800) {
       hamburgerLink.style.display = 'none';
@@ -109,22 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener('storage', function () {
     updateLinkVisibility();
-    console.log("Local storage updated. Checking link visibility.");
   });
 
   window.addEventListener('load', function () {
     updateLinkVisibility();
-    console.log("Page loaded. Checking link visibility.");
   });
 
   if (ksaLink) {
     ksaLink.addEventListener('click', function (event) {
-      console.log(`Clicked on ksa link: ${ksaLink.href}`);
       if (ksaLink.getAttribute('href') !== '#') {
         window.location.href = ksaLink.getAttribute('href');
       } else {
         event.preventDefault();
-        console.log("Prevented default action on ksa link with href='#'");
       }
     });
   }

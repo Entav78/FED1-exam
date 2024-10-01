@@ -26,7 +26,6 @@ export function generatePostHtml(post) {
     postImage.alt = post.media.alt || post.title;
     postImage.style.display = "block"; 
     postImage.style.width = "auto"; 
-    console.log("Image created with URL:", post.media.url); 
   } else {
     postImage.style.display = "none";
     console.warn("No image URL provided for this post.");

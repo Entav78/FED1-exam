@@ -10,7 +10,6 @@ export async function createPost(post) {
 
   try {
     const responseData = await fetchData(postsEndpoint, "POST", post);
-    console.log("Full Response Data:", responseData);
 
     const postId = responseData.data?.data?.id || responseData.data?.id;
     if (!postId) {
@@ -44,18 +43,12 @@ export async function loadPostData(postId) {
   }
 
   try {
-    console.log(`Fetching post data from endpoint: ${postEndpoint}`);
     const response = await fetchData(postEndpoint, "GET");
-    
-    console.log("Response received:", response);
 
-    const postData = response.data ? response.data : response; 
-    console.log("Loaded Post Data:", postData);
+    const postData = response.data ? response.data : response;
 
     const post = postData.data ? postData.data : postData; 
-    console.log("Final post object for setting fields:", post);
 
-    // Populate form fields with the fetched post data
     const titleField = document.getElementById("title");
     const authorField = document.getElementById("author");
     const publicationDateField = document.getElementById("publicationDate");
@@ -64,7 +57,6 @@ export async function loadPostData(postId) {
 
     if (titleField) {
       titleField.value = post.title || "Untitled";
-      console.log("Title set to:", titleField.value);
     } else {
       console.warn("Title field not found.");
     }
@@ -77,7 +69,6 @@ export async function loadPostData(postId) {
 
     if (publicationDateField) {
       const rawDate = post.publicationDate || post.created;
-      console.log("Raw date value:", rawDate);
 
       if (rawDate) {
         const dateObject = new Date(rawDate);
@@ -112,7 +103,6 @@ export async function loadPostData(postId) {
       console.warn("Image URL field not found.");
     }
 
-    console.log("Post data loaded successfully.");
   } catch (error) {
     console.error("Failed to load post data:", error);
     document.getElementById("message").textContent = "Failed to load post. Please try again.";

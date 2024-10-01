@@ -10,12 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const isLoggedIn = !!localStorage.getItem('accessToken');
   const username = "Hilde_Vatne";
 
-  console.log("Current URL:", window.location.href);
-  console.log("Post ID retrieved from URL:", postId);
-  console.log("Username used for request:", username);
-
   if (postId && username) {
-    console.log("Fetching post data...");
     loadPost(username, postId);
   } else {
     console.warn("Post ID or Username not found in the URL or localStorage.");
@@ -44,7 +39,6 @@ async function fetchPost(endpoint, token = null) {
   if (errorMessage) errorMessage.style.display = 'none';
 
   try {
-    console.log("Fetching from endpoint:", endpoint);
     const response = await fetch(endpoint, {
       headers: {
         "Authorization": token ? `Bearer ${token}` : undefined,
@@ -57,7 +51,6 @@ async function fetchPost(endpoint, token = null) {
     }
 
     const post = await response.json();
-    console.log("Fetched post data:", post);
 
     const postData = post.data || post;
     if (!postData || !postData.title || !postData.body) {
@@ -70,7 +63,6 @@ async function fetchPost(endpoint, token = null) {
     postContainer.appendChild(postHtml);
 
     const copyLinkButton = document.getElementById("copyLinkButton");
-    console.log("Direct check for Copy Link Button after content load:", copyLinkButton);
 
     if (copyLinkButton) {
       initializeCopyLinkButton("copyLinkButton");

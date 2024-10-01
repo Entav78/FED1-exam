@@ -25,8 +25,6 @@ async function loadPosts() {
     }
 
     const responseData = await response.json();
-    
-    console.log("API Response:", responseData);
 
     const posts = Array.isArray(responseData) ? responseData : responseData.data || [];
 

@@ -10,13 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
   const postId = getUrlParameter("id");
-  console.log("Post ID retrieved:", postId); 
- 
+  
 if (postId) {
   if (actionButton) actionButton.textContent = "Update Post";
   loadPostData(postId)
     .then(() => {
-      console.log("Post data loaded successfully.");
     })
     .catch(error => {
       console.error("Failed to load post data:", error);

@@ -12,14 +12,8 @@ export function initializeManageButton() {
       event.preventDefault();
       const parentPost = button.closest('.blog-post');
       const postId = parentPost ? parentPost.getAttribute('data-post-id') : null;
-      console.log('Clicked button with post ID:', postId); 
       redirectToManage(postId); 
     });
-  });
-
-  console.log('Initializing Manage Buttons');
-  document.querySelectorAll('.manage-button').forEach((button) => {
-    console.log('Current button display:', button.style.display);
   });
 }
 
