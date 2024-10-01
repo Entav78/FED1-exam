@@ -16,6 +16,19 @@ body {
   border-radius: 0.5vh;
   background-color: white;
   color: black;
+  box-sizing: border-box;
+  resize: none;
+}
+
+textarea.content-editor {
+  margin: 0;
+  padding: 2vh;
+  background: white;
+  border: 1px solid rgba(212, 175, 55, 1);
+  border-radius: 0.5vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  outline: none;
 }
 
 .content-editor img {
